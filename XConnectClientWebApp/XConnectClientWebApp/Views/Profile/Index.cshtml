@@ -1,0 +1,104 @@
+﻿@using XConnectClientWebApp.Models
+
+@model ContactViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12  toppad">
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <div class="col-md-9 toppad">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@(Model.Name != null && !Model.Name.Equals(" ") ? Model.Name : "Unknown")
+                        <span class="pull-right">
+                            <a href="@Url.Action("Edit", "Profile", new { id = Model.SourceId})" class="btn btn-xs btn-warning">Edit Contact</a>
+                        </span>                    
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <img alt="@Model.Name" src="@(Model.AvatarImage != null && !Model.AvatarImage.Equals("") ? Model.AvatarImage :"/images/avatar.png")" class="img-circle img-responsive" style="width: 120px; height: 120px;">
+                            <br/>
+                            <a href="@Url.Action("Upload", "Profile", new { id = Model.SourceId})" class="btn btn-xs btn-default">Upload Avatar</a>
+                        </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>SourceID:</td>
+                                        <td>@Model.SourceId</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prefix</td>
+                                        <td>@Model.Prefix</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td>@Model.EmailType<br />@Model.Email</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone Number:</td>
+                                        <td>@Model.PhoneNumberType<br />@Model.PhoneNumber</td>
+                                    </tr>
+                                    <tr>
+                                        <td>JobTitle</td>
+                                        <td>@Model.JobTitle</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Company</td>
+                                        <td>@Model.Company</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AddressLine1</td>
+                                        <td>@Model.AddressLine1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AddressLine2</td>
+                                        <td>@Model.AddressLine2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>City</td>
+                                        <td>@Model.City </td>
+                                    </tr>
+                                    <tr>
+                                        <td>State</td>
+                                        <td>@Model.State</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PostalCode</td>
+                                        <td>@Model.PostalCode</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CountryCode</td>
+                                        <td>@Model.CountryCode</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PreferredLanguage</td>
+                                        <td>@Model.PreferredLanguage</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Birthday</td>
+                                        <td>@(Model.Birthday.Year > 1900 ? Model.Birthday.ToShortDateString() : "")</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td>@Model.Gender</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    &nbsp;
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>

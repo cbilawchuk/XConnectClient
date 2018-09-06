@@ -10,6 +10,11 @@ namespace XConnectClientWebApp.Models
 
         public string Email { get; set; }
         public string EmailType { get; set; }
+
+        public string PhoneNumber { get; set; }
+        public string PhoneNumberType { get; set; }
+
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
@@ -30,15 +35,22 @@ namespace XConnectClientWebApp.Models
         public string PostalCode { get; set; }
         public string CountryCode { get; set; }
 
+        public string Name {
+            get
+            {
+                return string.Format("{0} {1}", this.FirstName, this.LastName);
+            }
+        }
+
 
         public IEnumerable<SelectListItem> EmailTypeList
         {
             get { return new SelectList(
                 new List<SelectListItem>
                 {
-                    new SelectListItem { Selected = true, Text = "(Email...)", Value = ""},
+                    new SelectListItem { Selected = true, Text = "Work", Value = "Work"},
                     new SelectListItem { Selected = false, Text = "Home", Value = "Home"},
-                    new SelectListItem { Selected = false, Text = "Work", Value = "Work"},
+
                 }, "Value", "Text", 1);
             }
         }

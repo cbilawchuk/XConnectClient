@@ -5,114 +5,163 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
-    <div class="col-md-8">
-        <h2>@ViewBag.Title</h2>
-        <p>@ViewBag.Message</p>
-        <div class="form-area">
-            @using (Html.BeginForm())
-            {
-
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        @Html.DropDownListFor(model => model.Prefix, Model.Honorific, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group col-md-10">
-                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First Name", required = "required" })
-                        @Html.ValidationMessageFor(model => model.FirstName)
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-
-                    </div>
-                    <div class="form-group col-md-10">
-                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last Name", required = "required" })
-                        @Html.ValidationMessageFor(model => model.LastName)
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        @Html.DropDownListFor(model => model.EmailType, Model.EmailTypeList, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group col-md-10">
-                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email", required = "required" })
-                        @Html.ValidationMessageFor(model => model.Email)
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-md-12  toppad">
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <div class="col-md-9 toppad">
 
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.JobTitle, new { @class = "form-control", placeholder = "Job Title" })
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.Company, new { @class = "form-control", placeholder = "Company" })
-                    </div>
-                </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @(Model.Name != null && !Model.Name.Equals(" ") ? Model.Name : "Unknown")
+                    <span class="pull-right">
+                        <a href="@Url.Action("Index", "Profile", new { id = Model.SourceId})" class="btn btn-xs btn-warning">Back to profile</a>
+                    </span>
+
+                </h3>
 
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.DropDownListFor(model => model.Gender, Model.GenderList, new { @class = "form-control" })
-                    </div>
-                </div>
+            </div>
+            <div class="panel-body">
+                <div class="form-area">
+                    @using (Html.BeginForm())
+                    {
 
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", placeholder = "Birthday" })
-                    </div>
-                    <div class="form-group col-md-8">
-                        @Html.DropDownListFor(model => model.PreferredLanguage, Model.PreferredLanguageList, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.AddressLine1, new { @class = "form-control", placeholder = "AddressLine1" })
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                @Html.DropDownListFor(model => model.Prefix, Model.Honorific, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First Name", required = "required" })
+                                @Html.ValidationMessageFor(model => model.FirstName)
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.AddressLine2, new { @class = "form-control", placeholder = "AddressLine2" })
-                    </div>
-                </div>
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last Name", required = "required" })
+                                @Html.ValidationMessageFor(model => model.LastName)
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                @Html.DropDownListFor(model => model.EmailType, Model.EmailTypeList, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "City", required = "required" })
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number", required = "required" })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber)
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "State", required = "required" })
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.AddressLine1, new { @class = "form-control", placeholder = "AddressLine1" })
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control", placeholder = "PostalCode", required = "required" })
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.AddressLine2, new { @class = "form-control", placeholder = "AddressLine2" })
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        @Html.TextBoxFor(model => model.CountryCode, new { @class = "form-control", placeholder = "CountryCode", required = "required" })
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "City", required = "required" })
+                            </div>
+                        </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Submit Form">
-                    </div>
-                    <div class="form-group col-md-10">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "State", required = "required" })
+                            </div>
+                        </div>
 
-                        @Html.ActionLink("Back to List", "Index")
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control", placeholder = "PostalCode", required = "required" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.CountryCode, new { @class = "form-control", placeholder = "CountryCode", required = "required" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.Company, new { @class = "form-control", placeholder = "Company" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.TextBoxFor(model => model.JobTitle, new { @class = "form-control", placeholder = "Job Title" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                @Html.DropDownListFor(model => model.Gender, Model.GenderList, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-4">
+                                @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", placeholder = "Birthday" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.DropDownListFor(model => model.PreferredLanguage, Model.PreferredLanguageList, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                            </div>
+                            <div class="form-group col-md-10">
+                                <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Submit Form">
+                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    }
                 </div>
-            }
+            </div>
         </div>
     </div>
 </div>

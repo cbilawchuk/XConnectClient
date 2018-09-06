@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using XConnectClientWebApp.Models;
 using XConnectClientWebApp.Services;
@@ -17,48 +19,31 @@ namespace XConnectClientWebApp.Controllers
             _xc = new XConnectClientService();
         }
 
+
+
+
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Message = "List of contacts in XConnect."; 
-            return View();
+            ViewBag.Title = "Profile";
+           
+            _xc.SetPageViewEvent(User.Identity.Name);
+
+            ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
+
+            return View(model);
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            ViewBag.Title = "Create";
-            ViewBag.Message = "Create a new contact.";
-            return View(new ContactViewModel());
-        }
-
-        [HttpPost]
-        public ActionResult Create(ContactViewModel model)
-        {
-            ViewBag.Title = "Create";
-            ViewBag.Message = "Create a new contact.";
-
-            try
-            {
-                //_xconnect.CreateContact(Guid.NewGuid().ToString(), model);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View(model);
-            };
-        }
 
         [HttpGet]
         public ActionResult Edit(string id)
         {
             ViewBag.Title = "Edit";
-            ViewBag.Message = "Viewing contact: " + User.Identity.Name;
+            ViewBag.Message = "Editing contact: " + User.Identity.Name;
 
             _xc.SetPageViewEvent(User.Identity.Name);
 
-            ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
+            ContactViewModel model = _cservice.GetContactDetails(id);
 
             return View(model);
         }
@@ -68,11 +53,10 @@ namespace XConnectClientWebApp.Controllers
         public ActionResult Edit(string id, ContactViewModel model)
         {
             ViewBag.Title = "Edit";
-            ViewBag.Message = "Viewing contact: " + User.Identity.Name;
-
+         
             try
             {              
-                _xc.SetPageViewEvent(User.Identity.Name);
+               // _xc.SetPageViewEvent(User.Identity.Name);
 
                 var results = _cservice.SetContactDetails(User.Identity.Name, model);
 
@@ -114,6 +98,34 @@ namespace XConnectClientWebApp.Controllers
             {
                 return View(model);
             };
+        }
+
+
+        public ActionResult FileUpload(HttpPostedFileBase file)
+        {
+            var Source = User.Identity.Name;
+
+            if (file != null)
+            {
+                string pic = Source + "." + System.IO.Path.GetExtension(file.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/images/profile"), pic);
+                // file is uploaded
+                file.SaveAs(path);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(ms);
+                    byte[] array = ms.GetBuffer();
+
+                    // update image
+                    _cservice.SetAvatarPicture(Source, array);
+
+                    
+                }
+
+            }
+            // after successfully uploading redirect the user
+            return RedirectToAction("Index");
         }
 
 

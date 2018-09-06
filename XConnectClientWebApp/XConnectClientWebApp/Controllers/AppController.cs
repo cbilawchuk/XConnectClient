@@ -10,31 +10,26 @@ namespace XConnectClientWebApp.Controllers
 {
     public class AppController : Controller
     {
+        private ContactServices _cservice;
         private XConnectClientService _xc;
 
         public AppController()
         {
+            _cservice = new ContactServices();
             _xc = new XConnectClientService();
         }
 
         public ActionResult Index()
         {
-            return View();
-        }
+            ViewBag.Title = "Dashboard";
 
-       
-        public ActionResult Dashboard()
-        {
             _xc.SetPageViewEvent(User.Identity.Name);
-            return View();
+            ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
+
+            return View(model);
         }
 
-        public ActionResult UserProfile()
-        {
-            _xc.SetPageViewEvent(User.Identity.Name);
-            return View();
-        }
-
+      
         public ActionResult About()
         {
             _xc.SetPageViewEvent(User.Identity.Name);

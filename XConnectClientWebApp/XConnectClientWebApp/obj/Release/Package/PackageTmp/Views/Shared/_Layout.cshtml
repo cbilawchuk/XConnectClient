@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - XConnect Client POC</title>
+    <title>@ViewBag.Title - Hello, my name is...</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,18 +18,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("XConnect Client POC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Hello, my name is...", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if (Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Dashboard", "Index", "App")</li>
-                        <li>@Html.ActionLink("About", "About", "App")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "App")</li>
-                        <li>@Html.ActionLink("Profile", "Edit", "Profile")</li>
+                    }
+                    <li>@Html.ActionLink("About", "About", "App")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "App")</li>
 
-                        <li>@Html.ActionLink("Log-Out [" + Html.Encode(User.Identity.Name) + "]", "Logout", "Home")</li>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Profile", "Index", "Profile")</li>
+                        <li>@Html.ActionLink("Log-Out", "Logout", "Home")</li>
                     }
                 </ul>
             </div>
@@ -39,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - XConnect Client POC</p>
+            <p>&copy; @DateTime.Now.Year - Hello, my name is...</p>
         </footer>
     </div>
 

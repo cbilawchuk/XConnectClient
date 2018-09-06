@@ -1,30 +1,58 @@
 ﻿@using XConnectClientWebApp.Models
-@model User
 
+@model ContactViewModel
 @{
-    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-8">
-            <h2>Dashboard</h2>
-            <p class="lead">Your XConnect Contact Record</p>
-            <p>Details:</p>
+            <h2>@ViewBag.Title</h2>
+            <img alt="@Model.Name" src="@(Model.AvatarImage != null && !Model.AvatarImage.Equals("") ? Model.AvatarImage :"/images/avatar.png")" class="img-circle img-responsive" style="width:80px; height:80px;">
+            <h4>@Model.Prefix @Model.Name</h4>
+            <small><a href="@Url.Action("Edit", "Profile", new { id = Model.SourceId})" class="btn btn-xs btn-warning">Edit @Model.SourceId</a></small>
         </div>
         <div class="col-md-4">
-            
+
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <h3>Your Profile</h3>
-        
+        <table class="table table-user-information">
+            <tbody>
+                <tr>
+                    <td>Email: [@Model.EmailType]</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>Phone Number: [@Model.PhoneNumberType]</td>
+                    <td>@Model.PhoneNumber</td>
+                </tr>
+                <tr>
+                    <td>JobTitle</td>
+                    <td>@Model.JobTitle</td>
+                </tr>
+                <tr>
+                    <td>PreferredLanguage</td>
+                    <td>@Model.PreferredLanguage</td>
+                </tr>
+                <tr>
+                    <td>Birthday</td>
+                    <td>@(Model.Birthday.Year > 1900 ? Model.Birthday.ToShortDateString() : "")</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>@Model.Gender</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="col-md-4">
-        <h3>Your Events</h3>
+    <div class="col-md-6">
         
+
     </div>
 </div>

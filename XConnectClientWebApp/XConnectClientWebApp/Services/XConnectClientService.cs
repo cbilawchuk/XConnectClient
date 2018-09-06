@@ -25,6 +25,11 @@ namespace XConnectClientWebApp.Services
         {
             HttpRequest request = HttpContext.Current.Request;
 
+            if(Source == null || Source.Equals(""))
+            {
+                Source = Guid.NewGuid().ToString();
+            }
+
             // Get or Create a new contact
             var contact = this.GetOrSetContact(Source);
 
@@ -60,25 +65,184 @@ namespace XConnectClientWebApp.Services
             }
         }
 
-        public void SetPersonalInformationFacet(string Source, PersonalInformation facet)
+        public void SetPersonalInformationFacet(string Source, PersonalInformation newfacet)
         {
-            HttpRequest request = HttpContext.Current.Request;
-
             // Get or Create a new contact
             var contact = this.GetOrSetContact(Source);
-
-            // Add an Interaction
-            var interaction = this.RegisterInteraction(contact);
 
             using (XConnectClient client = GetXConnectClient())
             {
                 try
                 {
-                    //Add personal identification facet
-                    client.SetFacet<PersonalInformation>(interaction, PersonalInformation.DefaultFacetKey, facet);
+                    // Retrieve facet by name
+                    var oldfacet = contact.GetFacet<PersonalInformation>(PersonalInformation.DefaultFacetKey);
+
+                    if (oldfacet != null)
+                    {
+                        oldfacet.Title = newfacet.Title;
+                        oldfacet.FirstName = newfacet.FirstName;
+                        oldfacet.LastName = newfacet.LastName;
+                        oldfacet.JobTitle = newfacet.JobTitle;
+                        oldfacet.Birthdate = newfacet.Birthdate;
+                        oldfacet.PreferredLanguage = newfacet.PreferredLanguage;
+                        oldfacet.Gender = newfacet.Gender;
+
+                        // Set the updated facet
+                        client.SetFacet<PersonalInformation>(contact, PersonalInformation.DefaultFacetKey, oldfacet);
+                    }
+                    else
+                    {
+                        //Add facet
+                        client.SetPersonal(contact, newfacet);
+                    }
+
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+        public void SetEmailListFacet(string Source, EmailAddressList newfacet)
+        {
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    // Retrieve facet by name
+                    var oldfacet = contact.GetFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
+
+                    if (oldfacet != null)
+                    {
+                        oldfacet.PreferredEmail = newfacet.PreferredEmail;
+                        oldfacet.PreferredKey = newfacet.PreferredKey;
+
+                        // Set the updated facet
+                        client.SetFacet<EmailAddressList>(contact, EmailAddressList.DefaultFacetKey, oldfacet);
+                    }
+                    else
+                    {
+                        //Add facet
+                        client.SetEmails(contact, newfacet);
+                        //client.SetFacet<EmailAddressList>(new FacetReference(contact, EmailAddressList.DefaultFacetKey), newfacet);
+                    }
+
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+        public void SetAddressListFacet(string Source, AddressList newfacet)
+        {
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    // Retrieve facet by name
+                    var oldfacet = contact.GetFacet<AddressList>(AddressList.DefaultFacetKey);
+
+                    if (oldfacet != null)
+                    {
+                        oldfacet.PreferredAddress = newfacet.PreferredAddress;
+                        oldfacet.PreferredKey = newfacet.PreferredKey;
+                        // Set the updated facet
+                        client.SetFacet<AddressList>(contact, AddressList.DefaultFacetKey, oldfacet);
+                    }
+                    else
+                    {
+                        //Add facet
+                        //client.SetAddresses(contact, newfacet);
+                        client.SetFacet<AddressList>(new FacetReference(contact, AddressList.DefaultFacetKey), newfacet);
+                    }
+
                     
-                    // Apply facets and events, and submit
-                    client.AddInteraction(interaction);
+client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+        public void SetPhoneListFacet(string Source, PhoneNumberList newfacet)
+        {
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    // Retrieve facet by name
+                    var oldfacet = contact.GetFacet<PhoneNumberList>(PhoneNumberList.DefaultFacetKey);
+
+                    if (oldfacet != null)
+                    {
+                        oldfacet.PreferredPhoneNumber = newfacet.PreferredPhoneNumber;
+                        oldfacet.PreferredKey = newfacet.PreferredKey;
+                        // Set the updated PhoneNumberList
+                        client.SetFacet<PhoneNumberList>(contact, PhoneNumberList.DefaultFacetKey, oldfacet);
+                    }
+                    else
+                    {
+                        //Add facet
+                        //client.SetAddresses(contact, newfacet);
+                        client.SetFacet<PhoneNumberList>(new FacetReference(contact, PhoneNumberList.DefaultFacetKey), newfacet);
+                    }
+
+
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+
+        public void SetAvatarFacet(string Source, Avatar newfacet)
+        {
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    // Retrieve facet by name
+                    var oldfacet = contact.GetFacet<Avatar>(Avatar.DefaultFacetKey);
+
+                    if (oldfacet != null)
+                    {
+                        oldfacet.Picture = newfacet.Picture;
+                        oldfacet.MimeType = "image/jpg";
+                        // Set the updated facet
+                        client.SetFacet<Avatar>(contact, Avatar.DefaultFacetKey, oldfacet);
+                    }
+                    else
+                    {
+                        client.SetFacet<Avatar>(new FacetReference(contact, Avatar.DefaultFacetKey), newfacet);
+                    }
+
+
                     client.Submit();
                 }
                 catch (XdbExecutionException ex)
@@ -316,13 +480,13 @@ namespace XConnectClientWebApp.Services
             }
         }
 
-        private Interaction RegisterInteraction(Contact existingContact)
+        private Interaction RegisterInteraction(Contact contact)
         {
             try
             {
                 //Create the basic interaction and then add additional data as needed
                 Interaction interaction = new Interaction(
-                    existingContact, 
+                    contact, 
                     InteractionInitiator.Contact, 
                     channelId: XConnectSettings.OnlineChannelId, 
                     userAgent: XConnectSettings.SiteSourceLabel

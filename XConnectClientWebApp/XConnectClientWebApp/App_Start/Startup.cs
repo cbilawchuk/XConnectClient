@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 using XConnectClientWebApp.Models;
 
 namespace XConnectClientWebApp.App_Start
@@ -10,6 +13,8 @@ namespace XConnectClientWebApp.App_Start
         protected void Application_Start()
         {
             Debug.WriteLine("A: Application_Start()");
+
+            
         }
 
         protected void Application_Start(object sender, EventArgs e)

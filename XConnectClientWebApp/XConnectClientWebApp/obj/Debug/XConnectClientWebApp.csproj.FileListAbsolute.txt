@@ -90,6 +90,8 @@ E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\Sys
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Runtime.Extensions.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Runtime.InteropServices.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Helpers.dll
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Http.dll
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Http.WebHost.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Mvc.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Optimization.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Razor.dll
@@ -121,6 +123,8 @@ E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\Sit
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Interactive.Async.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Interactive.Async.Providers.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Net.Http.Formatting.xml
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Http.xml
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Http.WebHost.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Helpers.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Mvc.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Optimization.xml
@@ -132,8 +136,8 @@ E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\Ant
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Diagnostics.DiagnosticSource.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.csprojAssemblyReference.cache
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.csproj.CoreCompileInputs.cache
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.csproj.CopyComplete
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.pdb
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.csprojAssemblyReference.cache

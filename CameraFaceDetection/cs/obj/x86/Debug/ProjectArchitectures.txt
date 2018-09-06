@@ -1,0 +1,1 @@
+E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\CameraFaceDetection.csproj;x86

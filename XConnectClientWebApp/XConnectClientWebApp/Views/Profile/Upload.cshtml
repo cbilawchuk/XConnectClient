@@ -7,23 +7,31 @@
 }
 
 <div class="container">
-    <div class="col-md-6">
-        <h2>@ViewBag.Title</h2>
-        <p>@ViewBag.Message</p>
-        @using (Html.BeginForm("Upload", "XConnect", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <div class="form-group">
-                <label>Upload Image</label>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <span class="btn btn-default btn-file">
-                            Browse… <input type="file" id="imgInp">
-                        </span>
-                    </span>
-                    <input type="text" class="form-control" readonly>
+    <div class="row">
+        <div class="col-md-12  toppad">
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <div class="col-md-9 toppad">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Upload</h3>
                 </div>
-                <input type="text" id="SourceId" name="SourceId" value="@Model.SourceId" />
+                <div class="panel-body">
+                    @using (Html.BeginForm("FileUpload", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group">
+                            <label for="file">Upload Image:</label>
+                            <span class="input-group-btn">
+                                <input type="file" name="file" id="file" style="width: 100%;" class="btn btn-default btn-file" />
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Upload" class="btn btn-primary" />
+                            <a href="@Url.Action("Index", "Profile", new { id = Model.SourceId})" class="btn btn-default">Cancel</a>
+                        </div>
+                    }
+                </div>
             </div>
-        }
+        </div>
     </div>
 </div>
