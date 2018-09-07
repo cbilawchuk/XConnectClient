@@ -10,8 +10,8 @@
   <Identity Name="Microsoft.SDKSamples.CameraFaceDetection.CS" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="d84d43cf-9193-4c11-a761-fe484a055751" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Face Detection C# Sample</DisplayName>
-    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <DisplayName>Sitecore XConnect Client Demo</DisplayName>
+    <PublisherDisplayName>Clark Bilawchuk</PublisherDisplayName>
     <Logo>Assets\StoreLogo-sdk.png</Logo>
   </Properties>
   <Dependencies>
@@ -22,13 +22,16 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="CameraFaceDetection.exe" EntryPoint="CameraFaceDetection.App">
-      <uap:VisualElements DisplayName="Face Detection C# Sample" Square150x150Logo="Assets\SquareTile-sdk.png" Square44x44Logo="Assets\SmallTile-sdk.png" Description="Face Detection C# Sample" BackgroundColor="#00b2f0">
+      <uap:VisualElements DisplayName="Sitecore XConnect Client Demo" Square150x150Logo="Assets\SquareTile-sdk.png" Square44x44Logo="Assets\SmallTile-sdk.png" Description="Sitecore XConnect Client Demo" BackgroundColor="#00b2f0">
         <uap:SplashScreen Image="Assets\Splash-sdk.png" />
         <uap:DefaultTile>
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape" />
+        </uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>

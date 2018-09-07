@@ -189,15 +189,17 @@ namespace FaceDetection.CameraFaceDetection_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[3];
+            _typeNameTable = new string[4];
             _typeNameTable[0] = "FaceDetection.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[3] = "Boolean";
 
-            _typeTable = new global::System.Type[3];
+            _typeTable = new global::System.Type[4];
             _typeTable[0] = typeof(global::FaceDetection.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[3] = typeof(global::System.Boolean);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -247,6 +249,7 @@ namespace FaceDetection.CameraFaceDetection_XamlTypeInfo
             case 0:   //  FaceDetection.MainPage
                 userType = new global::FaceDetection.CameraFaceDetection_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_MainPage;
+                userType.AddMemberName("IsSmileDetectionEnabled");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -258,16 +261,40 @@ namespace FaceDetection.CameraFaceDetection_XamlTypeInfo
             case 2:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::FaceDetection.CameraFaceDetection_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
+
+            case 3:   //  Boolean
+                xamlType = new global::FaceDetection.CameraFaceDetection_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
             }
             return xamlType;
         }
 
 
+        private object get_0_MainPage_IsSmileDetectionEnabled(object instance)
+        {
+            var that = (global::FaceDetection.MainPage)instance;
+            return that.IsSmileDetectionEnabled;
+        }
+        private void set_0_MainPage_IsSmileDetectionEnabled(object instance, object Value)
+        {
+            var that = (global::FaceDetection.MainPage)instance;
+            that.IsSmileDetectionEnabled = (global::System.Boolean)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::FaceDetection.CameraFaceDetection_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::FaceDetection.CameraFaceDetection_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "FaceDetection.MainPage.IsSmileDetectionEnabled":
+                userType = (global::FaceDetection.CameraFaceDetection_XamlTypeInfo.XamlUserType)GetXamlTypeByName("FaceDetection.MainPage");
+                xamlMember = new global::FaceDetection.CameraFaceDetection_XamlTypeInfo.XamlMember(this, "IsSmileDetectionEnabled", "Boolean");
+                xamlMember.Getter = get_0_MainPage_IsSmileDetectionEnabled;
+                xamlMember.Setter = set_0_MainPage_IsSmileDetectionEnabled;
+                break;
+            }
             return xamlMember;
         }
     }

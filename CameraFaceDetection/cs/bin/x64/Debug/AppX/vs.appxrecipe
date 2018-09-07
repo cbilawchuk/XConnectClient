@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>d84d43cf-9193-4c11-a761-fe484a055751</PackageIdentityName>
     <PackageIdentityPublisher>CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>EA889035A4DFC1C11867E207445208B2F8747C5543DC4A02F089A8C9C744D6C9</RegisteredManifestChecksum>
+    <LayoutDir>E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>2CECEF59EEEF75A1EEB298EB4779773F93CD7BD1F68FADCCA8D2A5408C8F3594</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>Microsoft.SDKSamples.CameraFaceDetection.CS_1.0.0.0_x64__8wekyb3d8bbwe</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>Microsoft.SDKSamples.CameraFaceDetection.CS_8wekyb3d8bbwe!App</RegisteredUserModeAppID>
     <RegisteredPackageID>Microsoft.SDKSamples.CameraFaceDetection.CS</RegisteredPackageID>
@@ -28,16 +28,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-05T02:40:24.445</Modified>
+      <Modified>2018-09-07T20:20:05.576</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe">
       <PackagePath>entrypoint\CameraFaceDetection.exe</PackagePath>
-      <Modified>2018-09-05T02:40:24.084</Modified>
+      <Modified>2018-09-07T20:20:05.244</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.csharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -91,6 +91,10 @@
       <PackagePath>System.dll</PackagePath>
       <Modified>2015-07-23T03:06:52.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.projectoxford.vision\1.0.393\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Vision.dll">
+      <PackagePath>Microsoft.ProjectOxford.Vision.dll</PackagePath>
+      <Modified>2017-04-19T16:38:14.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.visualbasic\10.0.0\lib\netcore50\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
       <Modified>2015-07-23T03:07:08.000</Modified>
@@ -98,6 +102,10 @@
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.win32.primitives\4.0.0\lib\dotnet\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
       <Modified>2015-07-23T03:07:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\newtonsoft.json\8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2016-01-09T18:50:06.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\system.appcontext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
@@ -451,58 +459,82 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-23T03:11:12.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\cs\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2017-12-26T03:31:20.885</Modified>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\badge-logo.png">
+      <PackagePath>Assets\badge-logo.png</PackagePath>
+      <Modified>2018-09-05T13:41:54.164</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\smalltile-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\microsoft-sdk.png">
+      <PackagePath>Assets\microsoft-sdk.png</PackagePath>
+      <Modified>2018-09-05T13:41:54.177</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\placeholder-sdk.png">
+      <PackagePath>Assets\placeholder-sdk.png</PackagePath>
+      <Modified>2018-09-05T13:41:54.190</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\placeholder.png">
+      <PackagePath>Assets\placeholder.png</PackagePath>
+      <Modified>2018-09-05T13:41:54.183</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\smalltile-sdk.png">
       <PackagePath>Assets\smalltile-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-26T03:31:21.005</Modified>
+      <Modified>2018-09-05T13:41:54.197</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\splash-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\splash-sdk.png">
       <PackagePath>Assets\splash-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-26T03:31:21.006</Modified>
+      <Modified>2018-09-05T13:41:54.201</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\squaretile-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\Square310x310Logo.png">
+      <PackagePath>Assets\Square310x310Logo.png</PackagePath>
+      <Modified>2018-09-05T13:41:54.205</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\squaretile-sdk.png">
       <PackagePath>Assets\squaretile-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-26T03:31:21.006</Modified>
+      <Modified>2018-09-05T13:41:54.211</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\storelogo-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\storelogo-sdk.png">
       <PackagePath>Assets\storelogo-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-26T03:31:21.007</Modified>
+      <Modified>2018-09-05T13:41:54.216</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\tile-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\tile-sdk.png">
       <PackagePath>Assets\tile-sdk.png</PackagePath>
-      <Modified>2017-12-26T03:31:21.007</Modified>
+      <Modified>2018-09-05T13:41:54.220</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.xr.xml">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\windows-sdk.png">
+      <PackagePath>Assets\windows-sdk.png</PackagePath>
+      <Modified>2018-09-05T13:41:54.161</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2018-09-05T13:41:11.038</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.xr.xml">
       <PackagePath>CameraFaceDetection.xr.xml</PackagePath>
-      <Modified>2018-09-05T02:40:23.771</Modified>
+      <Modified>2018-09-07T19:57:37.631</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-09-05T02:40:23.792</Modified>
+      <Modified>2018-09-07T20:20:04.920</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-09-05T02:40:23.793</Modified>
+      <Modified>2018-09-07T20:20:04.921</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-04-20T02:01:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-04T22:44:56.955</Modified>
+      <Modified>2018-09-07T13:32:48.710</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\Core\CameraFaceDetection.exe">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\Core\CameraFaceDetection.exe">
       <PackagePath>CameraFaceDetection.exe</PackagePath>
-      <Modified>2018-09-05T02:40:24.441</Modified>
+      <Modified>2018-09-07T20:20:05.573</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

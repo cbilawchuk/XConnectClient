@@ -319,10 +319,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/23/2014 12:57:34</publishTime>
     </File>
     <File Include="bin/XConnectClientWebApp.dll">
-      <publishTime>09/05/2018 21:42:34</publishTime>
+      <publishTime>09/07/2018 09:25:13</publishTime>
     </File>
     <File Include="bin/XConnectClientWebApp.pdb">
-      <publishTime>09/05/2018 21:42:34</publishTime>
+      <publishTime>09/07/2018 09:25:13</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>08/29/2018 11:30:34</publishTime>
@@ -472,7 +472,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/29/2018 11:30:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/05/2018 21:42:34</publishTime>
+      <publishTime>09/07/2018 08:16:18</publishTime>
     </File>
   </ItemGroup>
 </Project>

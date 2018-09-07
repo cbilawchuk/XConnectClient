@@ -243,13 +243,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\KioskContactController.cs" />
+    <Compile Include="Controllers\EventApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EventVisitor.cs" />
     <Compile Include="Models\ContactAddress.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Services\ContactServices.cs" />

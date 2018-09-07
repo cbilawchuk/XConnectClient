@@ -18,18 +18,33 @@
     xmlns:local="using:FaceDetection"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Width="1145">
 
     <Page.Resources>
-        <SolidColorBrush x:Key="TranslucentBlackBrush" Color="Black" Opacity="0.3"/>
+        <SolidColorBrush x:Key="TranslucentBlackBrush" Color="White" Opacity="0.3"/>
+        <Style x:Key="BasicTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}">
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
     </Page.Resources>
 
-    <Grid Background="Black">
+
+    
+    <Grid VerticalAlignment="Stretch" 
+          HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="Button">
-                <Setter Property="Margin" Value="10,40"/>
-                <Setter Property="MinWidth" Value="80"/>
-                <Setter Property="MinHeight" Value="80"/>
+                <Setter Property="Margin" Value="10,10"/>
+                <Setter Property="MinWidth" Value="150"/>
+                <Setter Property="MinHeight" Value="50"/>
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Background" Value="{StaticResource TranslucentBlackBrush}"/>
                 <Setter Property="BorderBrush" Value="White"/>
@@ -40,86 +55,161 @@
                 <Setter Property="MaxWidth" Value="40"/>
             </Style>
         </Grid.Resources>
-
         <!--Camera preview-->
-        <CaptureElement Name="PreviewControl" Width="960" Height="720" HorizontalAlignment="Left" Stretch="Uniform" />
-        
-        <Canvas>
-            <!--Canvas that will host the face detection bounding boxes, will share the same bounds as the preview within the CaptureElement-->
-            <!--It's contained inside of another canvas to allow for adjusting its size and position after applying a RenderTransform -->
-            <!--For more details, see SetFacesCanvasRotation-->
-            <Canvas Name="FacesCanvas" RenderTransformOrigin="0.5,0.5"/>
-        </Canvas>
-
-
+        <CaptureElement Name="PreviewControl" 
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left" 
+                        Stretch="UniformToFill" 
+                        Margin="30" 
+                        Grid.Column="0"
+                        />
+        <StackPanel 
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            Margin="10" 
+            Grid.Column="0"
+            >
+            <Canvas x:Name="FacesCanvas" 
+                    RenderTransformOrigin="0.5,0.5" 
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel 
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            Margin="10"
+            Grid.Column="0"
+            >
+            <Canvas x:Name="CropZone" 
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch">
+                <Rectangle MinWidth="400" 
+                           MinHeight="400" 
+                           Stroke="Red" 
+                           StrokeThickness="2" 
+                            HorizontalAlignment="Stretch" 
+                           Canvas.Left="180"
+                           Canvas.Top="100"/>
+            </Canvas>
+        </StackPanel>
         <!-- Capture + Record buttons -->
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0">
-            <Button Name="PhotoButton" Click="PhotoButton_Click" IsEnabled="False">
-                <Viewbox>
-                    <SymbolIcon Symbol="Camera"/>
-                </Viewbox>
-            </Button>
+        <Grid HorizontalAlignment="Stretch" 
+              VerticalAlignment="Bottom" 
+              Margin="25"
+              Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0" 
+                    HorizontalAlignment="Right">
 
-            <!--Button to enable / disable face detection-->
-            <Button Name="FaceDetectionButton" Click="FaceDetectionButton_Click" IsEnabled="False">
-                <Viewbox>
-                    <Grid>
-                        <SymbolIcon Name="FaceDetectionDisabledIcon" Symbol="Contact" Visibility="Visible"/>
-                        <SymbolIcon Name="FaceDetectionEnabledIcon" Symbol="Contact2" Visibility="Collapsed"/>
-                    </Grid>
-                </Viewbox>
-            </Button>
-            <Button Name="OCRDetectionButton" Click="OCRDetectionButton_Click" IsEnabled="True">
-                <Viewbox>
-                    <Grid>
-                        <SymbolIcon Name="OCRDetectionEnabledIcon" Symbol="Character" Visibility="Visible"/>
-                    </Grid>
-                </Viewbox>
+                <Button x:Name="FaceDetectionButton" 
+                    Click="FaceDetectionButton_Click"
+                    IsEnabled="True" 
+                        Background="{StaticResource TranslucentBlackBrush}"
+                    >
+                    <Viewbox>
+                        <Grid>
+                            <SymbolIcon x:Name="FaceDetectionDisabledIcon" Symbol="Contact" Visibility="Visible"/>
+                            <SymbolIcon x:Name="FaceDetectionEnabledIcon" Symbol="Contact2" Visibility="Collapsed"/>
+                        </Grid>
+                    </Viewbox>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button x:Name="PhotoButton" 
+                    Click="PhotoButton_Click" 
+                        Background="{StaticResource TranslucentBlackBrush}"
+                    IsEnabled="True"
+                    >
+                    <Viewbox>
+                        <SymbolIcon Symbol="Camera"/>
+                    </Viewbox>
+                </Button>
+            </StackPanel>
+            
+            
+        </Grid>
 
-            </Button>
+
+
+        <StackPanel HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" 
+                    Grid.Column="1"
+                    Margin="0 20 25 20"
+                    Padding="10">
+
+
+            <Grid HorizontalAlignment="Stretch" 
+              VerticalAlignment="Bottom" 
+              Margin="0"
+              Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" 
+                    Grid.Column="0"
+                    Margin="0 0 5 0"
+                    Padding="0">
+                    <TextBlock Style="{StaticResource BasicTextStyle}" Name="FacePreviewLabel" Text="Avatar Preview:" />
+
+                    <Border BorderBrush="White"
+                    BorderThickness="1"
+                    CornerRadius="0">
+                        <Image 
+                        x:Name="FacePreview"
+                        Stretch="UniformToFill"
+                        Height="150"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"                     
+                         />
+                    </Border>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" 
+                    Grid.Column="1"
+                    Margin="5 0 0 0"
+                    Padding="0">
+                    <TextBlock Style="{StaticResource BasicTextStyle}" Name="BadgePreviewLabel" Text="Badge Preview:" />
+
+                    <Border BorderBrush="White"
+                        BorderThickness="1"
+                        CornerRadius="0">
+                        <Image 
+                        x:Name="BadgePreview"
+                        Stretch="UniformToFill"
+                                Height="150"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"                     
+                     />
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Style="{StaticResource BasicTextStyle}" Name="BadgeText" Margin="0 30 0 10" FontSize="18" TextWrapping="WrapWholeWords" Text="Ready. Please step up to the camera."/>
+            
+            <StackPanel Name="EmailBock" Visibility="Collapsed">
+                <TextBlock Style="{StaticResource BasicTextStyle}" TextWrapping="Wrap" HorizontalAlignment="Left" Name="InstructionMsg" Margin="0 0 0 25"/>
+                <TextBlock Style="{StaticResource BasicTextStyle}" HorizontalAlignment="Left" Name="EmailAddressLabel"><Run Text="Email Address"/></TextBlock>
+                    <TextBox x:Name="EmailAddress" MaxLength="320" HorizontalAlignment="Stretch" InputScope="EmailSmtpAddress" Margin="0 5 0 5"/>
+                    <!--<TextBlock Style="{StaticResource BasicTextStyle}" HorizontalAlignment="Stretch"><Run Text="Phone Number"/></TextBlock>
+                    <TextBox x:Name="PhoneNumber" MaxLength="50" HorizontalAlignment="Stretch" InputScope="TelephoneNumber" Margin="0 5 0 5" />-->
+                <Button x:Name="OCRDetectionButton" Click="OCRDetectionButton_Click" Content="Submit Visit" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="True"/>
+                <Button x:Name="ResetButton" Click="ResetButton_Click" Content="Reset" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="True"/>
+            </StackPanel>
+
         </StackPanel>
-
-
-
-        <StackPanel HorizontalAlignment="right" VerticalAlignment="Top" Margin="50">
-            
-            
-            
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15">
-                <TextBlock Name="FacePreviewLabel" Text="Face Preview:"  Foreground="White"/>
-                <Image 
-                    x:Name="FacePreview"
-                    Width="192"
-                    Height="192"
-                    Stretch="UniformToFill"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" 
-                 />
-            </StackPanel>
-
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15">
-                <TextBlock Name="BadgePreviewLabel" Text="Badge Preview:"  Foreground="White"/>
-                <Image 
-                    x:Name="BadgePreview"
-                    Width="192"
-                    Height="192"
-                    Stretch="UniformToFill"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" 
-                 />
-            </StackPanel>
-
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15">
-                <TextBlock Name="BadgeText" Foreground="White"/>
-            </StackPanel>
-
-
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15">
-                <TextBlock Name="Status" Foreground="White"/>
-            </StackPanel>
-        </StackPanel>
-
-        
-
     </Grid>
 </Page>

@@ -43,6 +43,11 @@ using Windows.Media.Ocr;
 using Windows.Globalization;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Newtonsoft.Json;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace FaceDetection
 {
@@ -89,6 +94,10 @@ namespace FaceDetection
         private bool _analyzingEmotion = false;
 
         private bool _isSmileDetectionEnabled = false;
+
+        private OcrResult ocrResults;
+
+        private EventVisitor visitor;
 
         public bool IsSmileDetectionEnabled
         {
@@ -236,29 +245,67 @@ namespace FaceDetection
 
         private async void PhotoButton_Click(object sender, RoutedEventArgs e)
         {
-            await TakePhotoAsync();
+            await TakePhotoAsync(2);
         }
 
+        private async void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            FacePreview.Source = null;
+            BadgePreview.Source = null;
+
+            InstructionMsg.Visibility = Visibility.Visible;
+            EmailAddressLabel.Visibility = Visibility.Visible;
+            EmailAddress.Visibility = Visibility.Visible;
+            EmailAddress.Text = "";
+            OCRDetectionButton.IsEnabled = true;
+            BadgeText.Text = "Ready. Please step up to the camera.";
+
+            EmailBock.Visibility = Visibility.Collapsed;
+
+            OCRDetectionButton.Content = "Submit Event";
+        }
 
         private async void OCRDetectionButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (EmailAddress.Text != null && !EmailAddress.Text.Equals("") && OCRDetectionButton.Content.Equals("Submit Event"))
+            {
+                visitor.EmailAddress = EmailAddress.Text;
+                visitor.SourceId = GetHashCode(EmailAddress.Text.Trim());
+
+                string results = await PostAsync("https://xconnectclient.mylocaldev.site/api/EventApi", visitor);
+
+                BadgeText.Text = results;
+                
+                InstructionMsg.Visibility = Visibility.Collapsed;
+                EmailAddressLabel.Visibility = Visibility.Collapsed;
+                EmailAddress.Visibility = Visibility.Collapsed;
+                OCRDetectionButton.IsEnabled = false;
+
+                OCRDetectionButton.Content = "Start Over";
+
+                visitor = null;
+            }
+
+            if(OCRDetectionButton.Content.Equals("Start Over"))
+            {
+                FacePreview.Source = null;
+                BadgePreview.Source = null;
+
+                InstructionMsg.Visibility = Visibility.Visible;
+                EmailAddressLabel.Visibility = Visibility.Visible;
+                EmailAddress.Visibility = Visibility.Visible;
+                EmailAddress.Text = "";
+                OCRDetectionButton.IsEnabled = true;
+                BadgeText.Text = "Ready. Please step up to the camera.";
+
+                EmailBock.Visibility = Visibility.Collapsed;
+
+                OCRDetectionButton.Content = "Submit Event";
+            }
         }
 
-        private async void VideoButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!_isRecording)
-            {
-                await StartRecordingAsync();
-            }
-            else
-            {
-                await StopRecordingAsync();
-            }
-
-            // After starting or stopping video recording, update the UI to reflect the MediaCapture state
-            UpdateCaptureControls();
-        }
+      
 
         private async void FaceDetectionButton_Click(object sender, RoutedEventArgs e)
         {
@@ -271,7 +318,10 @@ namespace FaceDetection
             }
             else
             {
+                await TakePhotoAsync(1);
                 await CleanUpFaceDetectionEffectAsync();
+
+                BadgeText.Text = "Thanks, Now scan your show badge.";
             }
 
             UpdateCaptureControls();
@@ -279,17 +329,17 @@ namespace FaceDetection
 
         private async void HardwareButtons_CameraPressed(object sender, CameraEventArgs e)
         {
-            await TakePhotoAsync();
+            await TakePhotoAsync(2);
         }
 
-        private async void MediaCapture_RecordLimitationExceeded(MediaCapture sender)
-        {
-            // This is a notification that recording has to stop, and the app is expected to finalize the recording
+        //private async void MediaCapture_RecordLimitationExceeded(MediaCapture sender)
+        //{
+        //    // This is a notification that recording has to stop, and the app is expected to finalize the recording
 
-            await StopRecordingAsync();
+        //    await StopRecordingAsync();
 
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => UpdateCaptureControls());
-        }
+        //    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => UpdateCaptureControls());
+        //}
 
         private async void MediaCapture_Failed(MediaCapture sender, MediaCaptureFailedEventArgs errorEventArgs)
         {
@@ -380,7 +430,7 @@ namespace FaceDetection
                 _mediaCapture = new MediaCapture();
 
                 // Register for a notification when video recording has reached the maximum time and when something goes wrong
-                _mediaCapture.RecordLimitationExceeded += MediaCapture_RecordLimitationExceeded;
+                //_mediaCapture.RecordLimitationExceeded += MediaCapture_RecordLimitationExceeded;
                 _mediaCapture.Failed += MediaCapture_Failed;
 
                 var settings = new MediaCaptureInitializationSettings { VideoDeviceId = cameraDevice.Id };
@@ -546,11 +596,15 @@ namespace FaceDetection
         /// Takes a photo to a StorageFile and adds rotation metadata to it
         /// </summary>
         /// <returns></returns>
-        private async Task TakePhotoAsync()
+        private async Task TakePhotoAsync(int type)
         {
             var lowLagCapture = await _mediaCapture.PrepareLowLagPhotoCaptureAsync(ImageEncodingProperties.CreateUncompressed(MediaPixelFormat.Bgra8));
             var capturedPhoto = await lowLagCapture.CaptureAsync();
             var softwareBitmap = capturedPhoto.Frame.SoftwareBitmap;
+            if(visitor == null)
+            {
+                visitor = new EventVisitor();
+            }
 
             await lowLagCapture.FinishAsync();
 
@@ -570,7 +624,7 @@ namespace FaceDetection
                 BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
                 SoftwareBitmap image = await decoder.GetSoftwareBitmapAsync(softwareBitmap.BitmapPixelFormat, softwareBitmap.BitmapAlphaMode);
 
-                if (IsFaceTracking)
+                if (type == 1)
                 {
                     try
                     {
@@ -589,12 +643,19 @@ namespace FaceDetection
 
                     var source = new SoftwareBitmapSource();
                     await source.SetBitmapAsync(image);
+                   // byte[] array = null;
+                    //array = new byte[stream.Size];
+
+                    visitor.Avatar = image;
+                    //visitor.Avatar = Convert.ToBase64String(await stream.ReadAsync(array.AsBuffer(), (uint)stream.Size, InputStreamOptions.None));
 
                     // Set the source of the Image control
                     FacePreview.Source = source;
 
                 }
-                else
+
+
+                if(type == 2)
                 {
                     try
                     {
@@ -630,66 +691,79 @@ namespace FaceDetection
 
                     var imgSource = new WriteableBitmap(image.PixelWidth, image.PixelHeight);
                     image.CopyToBuffer(imgSource.PixelBuffer);
-                   
-                    var ocrResult = await ocrEngine.RecognizeAsync(image);
 
-                    BadgeText.Text = ocrResult.Text;
+                    visitor.Badge = image;
 
+                    ocrResults = await ocrEngine.RecognizeAsync(image);
 
-                    //Notify("Processing OCR");
-
+                    ProcessOcr(ocrResults);
+                    if (visitor.Name != null && !visitor.Name.Equals(" "))
+                    {
+                        EmailBock.Visibility = Visibility.Visible;
+                        BadgeText.Text = string.Format("Hi {0} of {1}. Welcome to our kiosk.", visitor.Name, visitor.Company, visitor.Relationship);
+                        InstructionMsg.Text = string.Format("Enter your email and we will put on our {0} list.", visitor.Relationship);
+                    }
+                    else
+                    {
+                        BadgeText.Text = "Oops!  Please scan your badge again.";
+                    }
                 }
-
             }
-
-            
-
         }
 
-        /// <summary>
-        /// Records an MP4 video to a StorageFile and adds rotation metadata to it
-        /// </summary>
-        /// <returns></returns>
-        private async Task StartRecordingAsync()
+        private async Task<string> GetRequestAsync(string uri)
         {
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(uri);
+
+            //will throw an exception if not successful
+            response.EnsureSuccessStatusCode();
+
+            string content = await response.Content.ReadAsStringAsync();
+            return await Task.Run(() => JObject.Parse(content).ToString());
+        }
+
+        private async Task<string> PostAsync(string uri, EventVisitor data)
+        {
+            var json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            var httpClient = new HttpClient();
+            var response = await httpClient.PostAsync(uri, new StringContent(json, Encoding.UTF8, "application/json"));
+            response.EnsureSuccessStatusCode();
+
+            string content = await response.Content.ReadAsStringAsync();
+            return await Task.Run(() => content);
+        }
+
+        private void ProcessOcr(OcrResult ocr)
+        {
+            string[] text = ocr.Text.Split(' ');
+
             try
             {
-                // Create storage file for the capture
-                var videoFile = await _captureFolder.CreateFileAsync("SimpleVideo.mp4", CreationCollisionOption.GenerateUniqueName);
 
-                var encodingProfile = MediaEncodingProfile.CreateMp4(VideoEncodingQuality.Auto);
+                visitor.FirstName = text[1];
+                visitor.LastName = text[2];
+                visitor.Company = text[3] + " " + text[4];
+                visitor.Relationship = text[5];
 
-                // Calculate rotation angle, taking mirroring into account if necessary
-                var rotationAngle = 360 - ConvertDeviceOrientationToDegrees(GetCameraOrientation());
-                encodingProfile.Video.Properties.Add(RotationKey, PropertyValue.CreateInt32(rotationAngle));
-
-                Debug.WriteLine("Starting recording to " + videoFile.Path);
-
-                await _mediaCapture.StartRecordToStorageFileAsync(encodingProfile, videoFile);
-                _isRecording = true;
-
-                Debug.WriteLine("Started recording!");
             }
             catch (Exception ex)
             {
-                // File I/O errors are reported as exceptions
-                Debug.WriteLine("Exception when starting video recording: " + ex.ToString());
+
             }
+
         }
 
-        /// <summary>
-        /// Stops recording a video
-        /// </summary>
-        /// <returns></returns>
-        private async Task StopRecordingAsync()
+        private string GetHashCode(string item)
         {
-            Debug.WriteLine("Stopping recording...");
+            string hash = item.GetHashCode().ToString();
 
-            _isRecording = false;
-            await _mediaCapture.StopRecordAsync();
-
-            Debug.WriteLine("Stopped recording!");
+            return hash;
         }
+
+
+
+        
 
         /// <summary>
         /// Cleans up the camera resources (after stopping any video recording and/or preview if necessary) and unregisters from MediaCapture events
@@ -701,12 +775,6 @@ namespace FaceDetection
 
             if (_isInitialized)
             {
-                // If a recording is in progress during cleanup, stop it to save the recording
-                if (_isRecording)
-                {
-                    await StopRecordingAsync();
-                }
-
                 if (_faceDetectionEffect != null)
                 {
                     await CleanUpFaceDetectionEffectAsync();
@@ -725,7 +793,7 @@ namespace FaceDetection
 
             if (_mediaCapture != null)
             {
-                _mediaCapture.RecordLimitationExceeded -= MediaCapture_RecordLimitationExceeded;
+                //_mediaCapture.RecordLimitationExceeded -= MediaCapture_RecordLimitationExceeded;
                 _mediaCapture.Failed -= MediaCapture_Failed;
                 _mediaCapture.Dispose();
                 _mediaCapture = null;
@@ -791,7 +859,6 @@ namespace FaceDetection
         {
             // The buttons should only be enabled if the preview started sucessfully
             PhotoButton.IsEnabled = _previewProperties != null;
-            //VideoButton.IsEnabled = _previewProperties != null;
             FaceDetectionButton.IsEnabled = _previewProperties != null;
 
             // Update the face detection icon depending on whether the effect exists or not
@@ -800,10 +867,6 @@ namespace FaceDetection
 
             // Hide the face detection canvas and clear it
             FacesCanvas.Visibility = (_faceDetectionEffect != null && _faceDetectionEffect.Enabled) ? Visibility.Visible : Visibility.Collapsed;
-
-            // Update recording button to show "Stop" icon instead of red "Record" icon when recording
-            //StartRecordingIcon.Visibility = _isRecording ? Visibility.Collapsed : Visibility.Visible;
-            //StopRecordingIcon.Visibility = _isRecording ? Visibility.Visible : Visibility.Collapsed;
 
             // If the camera doesn't support simultaneosly taking pictures and recording video, disable the photo button on record
             if (_isInitialized && !_mediaCapture.MediaCaptureSettings.ConcurrentRecordAndPhotoSupported)
@@ -1267,7 +1330,6 @@ namespace FaceDetection
 
         private void Notify(string text)
         {
-            Status.Text = Status.Text + text;
             Debug.WriteLine(text);
         }
 

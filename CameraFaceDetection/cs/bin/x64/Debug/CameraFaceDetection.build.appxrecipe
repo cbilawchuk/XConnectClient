@@ -10,22 +10,22 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>d84d43cf-9193-4c11-a761-fe484a055751</PackageIdentityName>
     <PackageIdentityPublisher>CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\AppX</LayoutDir>
+    <LayoutDir>E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe">
       <PackagePath>entrypoint\CameraFaceDetection.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.csharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
@@ -67,11 +67,17 @@
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.netcore.portable.compatibility\1.0.0\lib\netcore50\System.dll">
       <PackagePath>System.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.projectoxford.vision\1.0.393\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Vision.dll">
+      <PackagePath>Microsoft.ProjectOxford.Vision.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.visualbasic\10.0.0\lib\netcore50\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.win32.primitives\4.0.0\lib\dotnet\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\newtonsoft.json\8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\system.appcontext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
@@ -337,45 +343,63 @@
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\system.xml.xmlserializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\cs\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\badge-logo.png">
+      <PackagePath>Assets\badge-logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\smalltile-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\microsoft-sdk.png">
+      <PackagePath>Assets\microsoft-sdk.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\placeholder-sdk.png">
+      <PackagePath>Assets\placeholder-sdk.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\placeholder.png">
+      <PackagePath>Assets\placeholder.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\smalltile-sdk.png">
       <PackagePath>Assets\smalltile-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\splash-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\splash-sdk.png">
       <PackagePath>Assets\splash-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\squaretile-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\Square310x310Logo.png">
+      <PackagePath>Assets\Square310x310Logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\squaretile-sdk.png">
       <PackagePath>Assets\squaretile-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\storelogo-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\storelogo-sdk.png">
       <PackagePath>Assets\storelogo-sdk.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\SharedContent\media\tile-sdk.png">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\tile-sdk.png">
       <PackagePath>Assets\tile-sdk.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.xr.xml">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\windows-sdk.png">
+      <PackagePath>Assets\windows-sdk.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.xr.xml">
       <PackagePath>CameraFaceDetection.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\bin\x64\Debug\Core\CameraFaceDetection.exe">
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\Core\CameraFaceDetection.exe">
       <PackagePath>CameraFaceDetection.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
