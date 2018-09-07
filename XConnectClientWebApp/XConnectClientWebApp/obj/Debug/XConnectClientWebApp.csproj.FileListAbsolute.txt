@@ -141,3 +141,5 @@ E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Deb
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.pdb
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.csprojAssemblyReference.cache
+C:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.dll
+C:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Debug\XConnectClientWebApp.pdb
