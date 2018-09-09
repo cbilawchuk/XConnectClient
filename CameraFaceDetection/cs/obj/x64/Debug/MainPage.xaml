@@ -203,10 +203,10 @@
             <StackPanel x:ConnectionId='4' Name="EmailBock" Visibility="Collapsed">
                 <TextBlock x:ConnectionId='5' Style="{StaticResource BasicTextStyle}" TextWrapping="Wrap" HorizontalAlignment="Left" Name="InstructionMsg" Margin="0 0 0 25"/>
                 <TextBlock x:ConnectionId='6' Style="{StaticResource BasicTextStyle}" HorizontalAlignment="Left" Name="EmailAddressLabel"><Run Text="Email Address"/></TextBlock>
-                    <TextBox x:ConnectionId='7' x:Name="EmailAddress" MaxLength="320" HorizontalAlignment="Stretch" InputScope="EmailSmtpAddress" Margin="0 5 0 5"/>
+                <TextBox x:ConnectionId='7' x:Name="EmailAddress" MaxLength="320" HorizontalAlignment="Stretch" InputScope="EmailSmtpAddress" Margin="0 5 0 5"                                      />
                     <!--<TextBlock Style="{StaticResource BasicTextStyle}" HorizontalAlignment="Stretch"><Run Text="Phone Number"/></TextBlock>
                     <TextBox x:Name="PhoneNumber" MaxLength="50" HorizontalAlignment="Stretch" InputScope="TelephoneNumber" Margin="0 5 0 5" />-->
-                <Button x:ConnectionId='8' x:Name="OCRDetectionButton"                                  Content="Submit Visit" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="True"/>
+                <Button x:ConnectionId='8' x:Name="OCRDetectionButton"                                  Content="Submit Visit" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="False"/>
                 <Button x:ConnectionId='9' x:Name="ResetButton"                           Content="Reset" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="True"/>
             </StackPanel>
 

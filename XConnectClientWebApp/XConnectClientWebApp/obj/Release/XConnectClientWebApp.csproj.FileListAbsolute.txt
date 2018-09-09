@@ -141,3 +141,6 @@ E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\Sys
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Http.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\System.Web.Http.WebHost.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\obj\Release\XConnectClientWebApp.csprojAssemblyReference.cache
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\XConnectClientServices.dll
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\XConnectClientServices.pdb
+E:\GIT\SITECORE\XConnectClient\XConnectClientWebApp\XConnectClientWebApp\bin\XConnectClientServices.dll.config

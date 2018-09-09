@@ -29,7 +29,7 @@ namespace XConnectClientWebApp.Models
         public bool IsValid(string _username, string _password)
         {
             bool isValid = false;
-            if(_username != null && _username.Length < 10 && _username.Length > 4 && _password != null)
+            if(_username != null && _password != null)
             {
                 isValid = true;
             }

@@ -28,6 +28,9 @@
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe">
       <PackagePath>entrypoint\CameraFaceDetection.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe.config">
+      <PackagePath>CameraFaceDetection.exe.config</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.csharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
     </AppxPackagedFile>
@@ -342,6 +345,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\system.xml.xmlserializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\app.config">
+      <PackagePath>Assets\app.config</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\badge-logo.png">
       <PackagePath>Assets\badge-logo.png</PackagePath>

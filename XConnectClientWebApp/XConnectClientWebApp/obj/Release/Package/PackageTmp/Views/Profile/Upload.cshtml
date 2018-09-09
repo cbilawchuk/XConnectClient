@@ -6,32 +6,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12  toppad">
-            <h2>@ViewBag.Title</h2>
+<section role="main" class="content-body background-color-light">
+    <header class="page-header">
+        <h2>@ViewBag.Title.</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/App/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Pages</span></li>
+                <li><span>@ViewBag.Title.</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
         </div>
-        <div class="col-md-9 toppad">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Upload</h3>
-                </div>
-                <div class="panel-body">
+    </header>
+
+    <div class="row">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="pull-right">
+                        <a href="@Url.Action("Index", "Profile", new { id = Model.SourceId})" class="btn btn-xs btn-warning">Back to profile</a>
+                    </div>
+                    <h2 class="card-title">@(Model.Name != null && !Model.Name.Equals(" ") ? Model.Name : "Unknown")</h2>
+                </header>
+                <div class="card-body">
                     @using (Html.BeginForm("FileUpload", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <div class="form-group">
-                            <label for="file">Upload Image:</label>
-                            <span class="input-group-btn">
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Prefix</label>
+                            <div class="col-lg-6">
                                 <input type="file" name="file" id="file" style="width: 100%;" class="btn btn-default btn-file" />
-                            </span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Upload" class="btn btn-primary" />
-                            <a href="@Url.Action("Index", "Profile", new { id = Model.SourceId})" class="btn btn-default">Cancel</a>
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">&nbsp;</label>
+                            <div class="col-lg-6">
+                                <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Upload">
+                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+                            </div>
                         </div>
                     }
                 </div>
-            </div>
+            </section>
         </div>
     </div>
-</div>
+</section>

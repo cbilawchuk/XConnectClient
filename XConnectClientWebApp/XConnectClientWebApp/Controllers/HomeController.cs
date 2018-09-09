@@ -2,6 +2,8 @@
 using System.Web.Security;
 using XConnectClientWebApp.Models;
 using XConnectClientWebApp.Services;
+using XConnectClientServices.Services;
+using XConnectClientServices;
 
 namespace XConnectClientWebApp.Controllers
 {
@@ -26,9 +28,12 @@ namespace XConnectClientWebApp.Controllers
             {
                 if (user.IsValid(user.UserName, user.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(user.UserName, user.RememberMe);
 
-                    _xc.SetPageViewEvent(user.UserName);
+                    var userId = Security.ComputeMD5(user.UserName);
+
+                    FormsAuthentication.SetAuthCookie(userId, user.RememberMe);
+
+                    _xc.SetPageViewEvent(userId, System.Web.HttpContext.Current.Request);
 
 
                     return RedirectToAction("Index", "App");
@@ -42,7 +47,8 @@ namespace XConnectClientWebApp.Controllers
         }
         public ActionResult Logout()
         {
-            _xc.SetPageViewEvent(User.Identity.Name);
+            var userId = Security.ComputeMD5(User.Identity.Name);
+            _xc.SetPageViewEvent(userId, System.Web.HttpContext.Current.Request);
 
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");

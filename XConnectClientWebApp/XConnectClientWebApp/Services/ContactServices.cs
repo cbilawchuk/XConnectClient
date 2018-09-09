@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using XConnectClientWebApp.Models;
+using XConnectClientServices.Services;
 
 namespace XConnectClientWebApp.Services
 {
@@ -80,7 +81,6 @@ namespace XConnectClientWebApp.Services
             // Get or Create a new contact
             Contact contact = _xc.GetOrSetContact(Source);
 
-
             PersonalInformation pi = new PersonalInformation
             {
                 Title = model.Prefix,
@@ -91,36 +91,49 @@ namespace XConnectClientWebApp.Services
                 PreferredLanguage = model.PreferredLanguage,
                 Gender = model.Gender
             };
-
-            // create a preferred email address since this is just one
-            EmailAddress pe = new EmailAddress(model.Email, true);
-
-            // add email to an email facet (List)
-            EmailAddressList el = new EmailAddressList(pe, model.EmailType);
-
-            PhoneNumber ph = new PhoneNumber(model.CountryCode, model.PhoneNumber);
-
-            PhoneNumberList pl = new PhoneNumberList(ph, model.PhoneNumberType);
-
-            Address a = new Address
-            {
-                AddressLine1 = model.AddressLine1,
-                AddressLine2 = model.AddressLine2,
-                City = model.City,
-                StateOrProvince = model.State,
-                CountryCode = model.CountryCode,
-                PostalCode = model.PostalCode
-            };
-
-            AddressList al = new AddressList(a, model.EmailType);  // Using emailType =='Work' since don't have a address type in model.
-
             _xc.SetPersonalInformationFacet(Source, pi);
 
-            _xc.SetEmailListFacet(Source, el);
 
-            _xc.SetPhoneListFacet(Source, pl);
+            if (model.Email != null && !model.Email.Equals(""))
+            {
+                // create a preferred email address since this is just one
+                EmailAddress pe = new EmailAddress(model.Email, true);
 
-            //_xc.SetAddressListFacet(Source, al);
+                // add email to an email facet (List)
+                EmailAddressList el = new EmailAddressList(pe, model.EmailType);
+
+                _xc.SetEmailListFacet(Source, el);
+            }
+
+            if (model.PhoneNumber !=null && !model.PhoneNumber.Equals(""))
+            {
+                PhoneNumber ph = new PhoneNumber(model.CountryCode, model.PhoneNumber);
+
+                PhoneNumberList pl = new PhoneNumberList(ph, model.PhoneNumberType);
+
+                _xc.SetPhoneListFacet(Source, pl);
+            }
+
+
+            if (model.AddressLine1 != null)
+            {
+                Address a = new Address
+                {
+                    AddressLine1 = model.AddressLine1,
+                    AddressLine2 = model.AddressLine2,
+                    City = model.City,
+                    StateOrProvince = model.State,
+                    CountryCode = model.CountryCode,
+                    PostalCode = model.PostalCode
+                };
+
+                AddressList al = new AddressList(a, model.EmailType);  // Using emailType =='Work' since don't have a address type in model.
+
+                _xc.SetAddressListFacet(Source, al);
+            }
+
+
+            _xc.SetGoal(Source, XConnectSettings.OnlineGoalId);
 
             return true;
         }

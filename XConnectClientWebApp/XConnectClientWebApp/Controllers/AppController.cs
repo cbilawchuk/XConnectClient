@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using XConnectClientWebApp.Models;
 using XConnectClientWebApp.Services;
+using XConnectClientServices.Services;
 
 namespace XConnectClientWebApp.Controllers
 {
@@ -23,7 +24,7 @@ namespace XConnectClientWebApp.Controllers
         {
             ViewBag.Title = "Dashboard";
 
-            _xc.SetPageViewEvent(User.Identity.Name);
+            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
             ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
 
             return View(model);
@@ -32,14 +33,18 @@ namespace XConnectClientWebApp.Controllers
       
         public ActionResult About()
         {
-            _xc.SetPageViewEvent(User.Identity.Name);
-            return View();
+            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
+            ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
+
+            return View(model);
         }
 
         public ActionResult Contact()
         {
-            _xc.SetPageViewEvent(User.Identity.Name);
-            return View();
+            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
+            ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
+
+            return View(model);
         }
     }
 }

@@ -4,164 +4,178 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container">
-    <div class="row">
-        <div class="col-md-12  toppad">
-            <h2>@ViewBag.Title</h2>
+
+
+
+<section role="main" class="content-body background-color-light">
+    <header class="page-header">
+        <h2>@ViewBag.Title.</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/App/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Pages</span></li>
+                <li><span>@ViewBag.Title.</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
         </div>
-        <div class="col-md-9 toppad">
+    </header>
 
-
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        @(Model.Name != null && !Model.Name.Equals(" ") ? Model.Name : "Unknown")
-                    <span class="pull-right">
+    <div class="row">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="pull-right">
                         <a href="@Url.Action("Index", "Profile", new { id = Model.SourceId})" class="btn btn-xs btn-warning">Back to profile</a>
-                    </span>
+                    </div>
 
-                </h3>
-
-
-            </div>
-            <div class="panel-body">
-                <div class="form-area">
-                    @using (Html.BeginForm())
+                    <h2 class="card-title">@(Model.Name != null && !Model.Name.Equals(" ") ? Model.Name : "Unknown")</h2>
+                    
+                </header>
+                <div class="card-body">
+                    @using (Html.BeginForm(new { @class = "form-horizontal form-bordered" }))
                     {
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Prefix</label>
+                            <div class="col-lg-6">
                                 @Html.DropDownListFor(model => model.Prefix, Model.Honorific, new { @class = "form-control" })
                             </div>
-                            <div class="form-group col-md-10">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">First Name</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First Name", required = "required" })
                                 @Html.ValidationMessageFor(model => model.FirstName)
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-
-                            </div>
-                            <div class="form-group col-md-10">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Last Name</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last Name", required = "required" })
                                 @Html.ValidationMessageFor(model => model.LastName)
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">EmailType</label>
+                            <div class="col-lg-6">
                                 @Html.DropDownListFor(model => model.EmailType, Model.EmailTypeList, new { @class = "form-control" })
                             </div>
-                            <div class="form-group col-md-10">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Email</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email", required = "required" })
                                 @Html.ValidationMessageFor(model => model.Email)
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
-                                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number", required = "required" })
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Phone Number</label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number" })
                                 @Html.ValidationMessageFor(model => model.PhoneNumber)
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">AddressLine1</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.AddressLine1, new { @class = "form-control", placeholder = "AddressLine1" })
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">AddressLine2</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.AddressLine2, new { @class = "form-control", placeholder = "AddressLine2" })
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
-                                @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "City", required = "required" })
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
-                                @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "State", required = "required" })
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Default</label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "City" })
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
-                                @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control", placeholder = "PostalCode", required = "required" })
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">State</label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "State" })
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">PostalCode</label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control", placeholder = "PostalCode" })
                             </div>
-                            <div class="form-group col-md-10">
-                                @Html.TextBoxFor(model => model.CountryCode, new { @class = "form-control", placeholder = "CountryCode", required = "required" })
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Country Code</label>
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(model => model.CountryCode, new { @class = "form-control", placeholder = "CountryCode" })
                             </div>
                         </div>
 
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Company</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.Company, new { @class = "form-control", placeholder = "Company" })
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Job Title</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.JobTitle, new { @class = "form-control", placeholder = "Job Title" })
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Gender</label>
+                            <div class="col-lg-6">
                                 @Html.DropDownListFor(model => model.Gender, Model.GenderList, new { @class = "form-control" })
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-4">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Birthday</label>
+                            <div class="col-lg-6">
                                 @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", placeholder = "Birthday" })
                             </div>
-                            <div class="form-group col-md-6">
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">Preferred Language</label>
+                            <div class="col-lg-6">
                                 @Html.DropDownListFor(model => model.PreferredLanguage, Model.PreferredLanguageList, new { @class = "form-control" })
                             </div>
                         </div>
 
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                            </div>
-                            <div class="form-group col-md-10">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2" for="inputDefault">&nbsp;</label>
+                            <div class="col-lg-6">
                                 <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Submit Form">
                                 @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
                             </div>
                         </div>
                     }
+
                 </div>
-            </div>
+            </section>
         </div>
     </div>
-</div>
+
+
+</section>
+
+

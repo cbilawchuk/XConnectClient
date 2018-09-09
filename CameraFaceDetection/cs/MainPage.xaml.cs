@@ -48,6 +48,11 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Text;
+using Windows.Data.Xml.Dom;
+using Windows.Security.Cryptography.Core;
+using Windows.Security.Cryptography;
+using System.Globalization;
+using System.Threading;
 
 namespace FaceDetection
 {
@@ -99,6 +104,10 @@ namespace FaceDetection
 
         private EventVisitor visitor;
 
+        private bool _holdForTimer = false;
+
+        private Timer _pictureTimer;
+
         public bool IsSmileDetectionEnabled
         {
             get { return _isSmileDetectionEnabled; }
@@ -116,6 +125,10 @@ namespace FaceDetection
         // need to throtle checks to Cognitive Services for free tier
         private DateTime _lastEmotionCheck = default(DateTime);
 
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+
+    
         public event EventHandler<bool> SmileDetectionChanged;
 
         #region Constructor, lifecycle and navigation
@@ -130,6 +143,9 @@ namespace FaceDetection
             // Useful to know when to initialize/clean up the camera
             Application.Current.Suspending += Application_Suspending;
             Application.Current.Resuming += Application_Resuming;
+
+
+            
         }
 
         private async void Application_Suspending(object sender, SuspendingEventArgs e)
@@ -263,55 +279,104 @@ namespace FaceDetection
 
             EmailBock.Visibility = Visibility.Collapsed;
 
-            OCRDetectionButton.Content = "Submit Event";
+            OCRDetectionButton.Content = "Submit Visit";
+
+            visitor = new EventVisitor();
         }
+
+        private async Task<string> GetConfig(string item)
+        {
+            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/app.config"));
+            XmlDocument xmlConfiguration = await XmlDocument.LoadFromFileAsync(file);
+
+            IXmlNode node = xmlConfiguration.DocumentElement.SelectSingleNode(string.Format("./appSettings/add[@key='{0}']/@value", item));
+
+            if (node == null)
+            {
+                // do some error handling or set default value
+                return null;
+            }
+
+            string configValue = (string)node.NodeValue;
+
+            return configValue;
+        }
+
+        private void textChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            OCRDetectionButton.IsEnabled = true;
+        } 
 
         private async void OCRDetectionButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EmailAddress.Text != null && !EmailAddress.Text.Equals("") && OCRDetectionButton.Content.Equals("Submit Event"))
-            {
-                visitor.EmailAddress = EmailAddress.Text;
-                visitor.SourceId = GetHashCode(EmailAddress.Text.Trim());
+           
 
-                string results = await PostAsync("https://xconnectclient.mylocaldev.site/api/EventApi", visitor);
+            if (EmailAddress.Text != null && !EmailAddress.Text.Equals("") && OCRDetectionButton.Content.Equals("Submit Visit"))
+            {
+                string results = "";
+                try
+                {
+                    visitor.EmailAddress = EmailAddress.Text;
+                    visitor.SourceId = ComputeMD5(EmailAddress.Text.Trim());
+                    string url = await GetConfig("EventApi");
+
+                    results = await PostAsync(url, visitor);                    
+
+                    InstructionMsg.Visibility = Visibility.Collapsed;
+                    EmailAddressLabel.Visibility = Visibility.Collapsed;
+                    EmailAddress.Visibility = Visibility.Collapsed;
+                    OCRDetectionButton.IsEnabled = false;
+
+                    visitor = null;
+
+                }
+                catch(Exception ex)
+                {
+                    results = ex.Message;
+                }
 
                 BadgeText.Text = results;
-                
-                InstructionMsg.Visibility = Visibility.Collapsed;
-                EmailAddressLabel.Visibility = Visibility.Collapsed;
-                EmailAddress.Visibility = Visibility.Collapsed;
-                OCRDetectionButton.IsEnabled = false;
-
-                OCRDetectionButton.Content = "Start Over";
-
-                visitor = null;
             }
-
-            if(OCRDetectionButton.Content.Equals("Start Over"))
+            else
             {
-                FacePreview.Source = null;
-                BadgePreview.Source = null;
 
-                InstructionMsg.Visibility = Visibility.Visible;
-                EmailAddressLabel.Visibility = Visibility.Visible;
-                EmailAddress.Visibility = Visibility.Visible;
-                EmailAddress.Text = "";
-                OCRDetectionButton.IsEnabled = true;
-                BadgeText.Text = "Ready. Please step up to the camera.";
-
-                EmailBock.Visibility = Visibility.Collapsed;
-
-                OCRDetectionButton.Content = "Submit Event";
-            }
+            }            
         }
 
-      
+
+        private string ComputeMD5(string str)
+        {
+            var alg = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
+            IBuffer buff = CryptographicBuffer.ConvertStringToBinary(str, BinaryStringEncoding.Utf8);
+            var hashed = alg.HashData(buff);
+            var res = CryptographicBuffer.EncodeToHexString(hashed);
+            return res;
+        }
+
+
+
+        private async void ReadUri()
+        {
+            try
+            {
+                StorageFile sampleFile = await localFolder.GetFileAsync("dataFile.txt");
+                String timestamp = await FileIO.ReadTextAsync(sampleFile);
+                // Data is contained in timestamp
+            }
+            catch (Exception)
+            {
+                // Timestamp not found
+            }
+        }
 
         private async void FaceDetectionButton_Click(object sender, RoutedEventArgs e)
         {
             if (_faceDetectionEffect == null || !_faceDetectionEffect.Enabled)
             {
                 // Clear any rectangles that may have been left over from a previous instance of the effect
+
+                _lastEmotionCheck = DateTime.Now;
+
                 FacesCanvas.Children.Clear();
 
                 await CreateFaceDetectionEffectAsync();
@@ -352,53 +417,25 @@ namespace FaceDetection
 
         private async void FaceDetectionEffect_FaceDetected(FaceDetectionEffect sender, FaceDetectedEventArgs args)
         {
-            // Ask the UI thread to render the face bounding boxes
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => HighlightDetectedFaces(args.ResultFrame.DetectedFaces));
+            
+            var regionsControl = _mediaCapture.VideoDeviceController.RegionsOfInterestControl;
+            bool faceDetectionFocusAndExposureSupported = regionsControl.MaxRegions > 0 && (regionsControl.AutoExposureSupported || regionsControl.AutoFocusSupported);
 
+            if (args.ResultFrame.DetectedFaces.Count > 0 &&  (DateTime.Now - _lastEmotionCheck).TotalSeconds > 5 && !_holdForTimer) //_isSmileDetectionEnabled && !_analyzingEmotion &&
+            {               
 
-            if (args.ResultFrame.DetectedFaces.Count > 0)
-            {
-                //Debug.WriteLine("Detected Face");
+                _analyzingEmotion = true;
+                Debug.WriteLine("Frame Captured");
+                
+
+                _analyzingEmotion = false;
+
+                _lastEmotionCheck = DateTime.Now;
             }
 
-            //if (args.ResultFrame.DetectedFaces.Count > 0 &&  (DateTime.Now - _lastEmotionCheck).TotalSeconds > 4) //_isSmileDetectionEnabled && !_analyzingEmotion &&
-            //{
-            //    _analyzingEmotion = true;
 
-            //    var previewProperties = _mediaCapture.VideoDeviceController.GetMediaStreamProperties(MediaStreamType.VideoPreview) as VideoEncodingProperties;
-            //    double scale = 480d / (double)previewProperties.Height;
-
-            //    VideoFrame videoFrame = new VideoFrame(BitmapPixelFormat.Bgra8, (int)(previewProperties.Width * scale), 480);
-
-            //    using (var frame = await _mediaCapture.GetPreviewFrameAsync(videoFrame))
-            //    {
-            //        if (frame.SoftwareBitmap != null)
-            //        {
-            //            var bitmap = frame.SoftwareBitmap;
-
-            //            InMemoryRandomAccessStream stream2 = new InMemoryRandomAccessStream();
-            //            BitmapEncoder encoder2 = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream2);
-            //            encoder2.SetSoftwareBitmap(bitmap);
-
-            //            await encoder2.FlushAsync();
-
-            //            var smiling = true; // await EmotionAPI.Instance.CheckIfEveryoneIsSmiling(stream, args.ResultFrame.DetectedFaces, scale);
-
-                      
-            //            _lastEmotionCheck = DateTime.Now;
-
-            //            if (smiling)
-            //            {
-            //                IsSmileDetectionEnabled = false;
-            //                //await _captureElement.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () => { await this.TakePhotoAsync(); });
-
-                            
-            //            }
-            //        }
-            //    }
-
-            //    _analyzingEmotion = false;
-            //}
+            // Ask the UI thread to render the face bounding boxes
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => HighlightDetectedFaces(args.ResultFrame.DetectedFaces));
 
         }
 
@@ -563,7 +600,7 @@ namespace FaceDetection
             _faceDetectionEffect.FaceDetected += FaceDetectionEffect_FaceDetected;
 
             // Choose the shortest interval between detection events
-            _faceDetectionEffect.DesiredDetectionInterval = TimeSpan.FromMilliseconds(300);
+            _faceDetectionEffect.DesiredDetectionInterval = TimeSpan.FromMilliseconds(100);
 
             // Start detecting faces
             _faceDetectionEffect.Enabled = true;
@@ -592,6 +629,40 @@ namespace FaceDetection
             IsFaceTracking = false;
         }
 
+
+        private async Task<byte[]> GetBitMapBytes(SoftwareBitmap softwareBitmap)
+        {
+            var data = await EncodedBytes(softwareBitmap, BitmapEncoder.JpegEncoderId);
+
+            return data;
+        }
+
+        private async Task<byte[]> EncodedBytes(SoftwareBitmap soft, Guid encoderId)
+        {
+            byte[] array = null;
+
+            // First: Use an encoder to copy from SoftwareBitmap to an in-mem stream (FlushAsync)
+            // Next:  Use ReadAsync on the in-mem stream to get byte[] array
+
+            using (var ms = new InMemoryRandomAccessStream())
+            {
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(encoderId, ms);
+                encoder.SetSoftwareBitmap(soft);
+
+                try
+                {
+                    await encoder.FlushAsync();
+                }
+                catch (Exception ex) { return new byte[0]; }
+
+                array = new byte[ms.Size];
+                await ms.ReadAsync(array.AsBuffer(), (uint)ms.Size, InputStreamOptions.None);
+            }
+            return array;
+        }
+
+
+
         /// <summary>
         /// Takes a photo to a StorageFile and adds rotation metadata to it
         /// </summary>
@@ -614,10 +685,10 @@ namespace FaceDetection
                 encoder.SetSoftwareBitmap(softwareBitmap);
                 encoder.BitmapTransform.Bounds = new BitmapBounds()
                 {
-                    X = 140,
-                    Y = 60,
-                    Height = 360,
-                    Width = 360
+                    X = 80,
+                    Y = 0,
+                    Height = 480,
+                    Width = 480
                 };
 
                 await encoder.FlushAsync();
@@ -643,14 +714,20 @@ namespace FaceDetection
 
                     var source = new SoftwareBitmapSource();
                     await source.SetBitmapAsync(image);
-                   // byte[] array = null;
-                    //array = new byte[stream.Size];
 
+
+                    //byte[] imageBytes = new byte[4 * decoder.PixelWidth * decoder.PixelHeight];
+                    //image.CopyToBuffer(imageBytes.AsBuffer());
+
+                   
                     visitor.Avatar = image;
-                    //visitor.Avatar = Convert.ToBase64String(await stream.ReadAsync(array.AsBuffer(), (uint)stream.Size, InputStreamOptions.None));
+                    visitor.Avatar64 = Convert.ToBase64String(await GetBitMapBytes(image));
 
                     // Set the source of the Image control
                     FacePreview.Source = source;
+
+                    
+
 
                 }
 
@@ -692,7 +769,12 @@ namespace FaceDetection
                     var imgSource = new WriteableBitmap(image.PixelWidth, image.PixelHeight);
                     image.CopyToBuffer(imgSource.PixelBuffer);
 
+                    byte[] imageBytes = new byte[4 * decoder.PixelWidth * decoder.PixelHeight];
+                    image.CopyToBuffer(imageBytes.AsBuffer());
+
                     visitor.Badge = image;
+                    visitor.Badge64 = Convert.ToBase64String(imageBytes);
+
 
                     ocrResults = await ocrEngine.RecognizeAsync(image);
 
@@ -700,8 +782,8 @@ namespace FaceDetection
                     if (visitor.Name != null && !visitor.Name.Equals(" "))
                     {
                         EmailBock.Visibility = Visibility.Visible;
-                        BadgeText.Text = string.Format("Hi {0} of {1}. Welcome to our kiosk.", visitor.Name, visitor.Company, visitor.Relationship);
-                        InstructionMsg.Text = string.Format("Enter your email and we will put on our {0} list.", visitor.Relationship);
+                        BadgeText.Text = string.Format("Welcome to our kiosk, {0} ({2}) of {1}.", visitor.Name, visitor.Company, visitor.Title);
+                        InstructionMsg.Text = string.Format("Please add your email to our {0} list.", visitor.Relationship, visitor.Relationship);
                     }
                     else
                     {
@@ -709,6 +791,8 @@ namespace FaceDetection
                     }
                 }
             }
+
+
         }
 
         private async Task<string> GetRequestAsync(string uri)
@@ -740,9 +824,9 @@ namespace FaceDetection
 
             try
             {
-
-                visitor.FirstName = text[1];
-                visitor.LastName = text[2];
+                visitor.Title = FirstCharToUpper(text[0]);
+                visitor.FirstName = FirstCharToUpper(text[1]);
+                visitor.LastName = FirstCharToUpper(text[2]);
                 visitor.Company = text[3] + " " + text[4];
                 visitor.Relationship = text[5];
 
@@ -762,8 +846,13 @@ namespace FaceDetection
         }
 
 
+        public static string FirstCharToUpper(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+                throw new ArgumentException("ARGH!");
+            return input.First().ToString().ToUpper() + input.Substring(1);
+        }
 
-        
 
         /// <summary>
         /// Cleans up the camera resources (after stopping any video recording and/or preview if necessary) and unregisters from MediaCapture events

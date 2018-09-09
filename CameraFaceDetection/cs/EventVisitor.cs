@@ -20,6 +20,7 @@ namespace FaceDetection
         public string PhoneNumber { get; set; }
         public string Company { get; set; }
         public string Relationship { get; set; }
+        public string Title { get; set; }
 
         public string Name {
             get

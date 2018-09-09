@@ -31,13 +31,17 @@
     <AppXManifest Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-07T20:20:05.576</Modified>
+      <Modified>2018-09-09T03:57:23.182</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe">
       <PackagePath>entrypoint\CameraFaceDetection.exe</PackagePath>
-      <Modified>2018-09-07T20:20:05.244</Modified>
+      <Modified>2018-09-09T03:19:33.967</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe.config">
+      <PackagePath>CameraFaceDetection.exe.config</PackagePath>
+      <Modified>2018-09-09T03:22:01.226</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.csharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -459,6 +463,10 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-23T03:11:12.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\app.config">
+      <PackagePath>Assets\app.config</PackagePath>
+      <Modified>2018-09-09T03:22:01.226</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\Assets\badge-logo.png">
       <PackagePath>Assets\badge-logo.png</PackagePath>
       <Modified>2018-09-05T13:41:54.164</Modified>
@@ -513,15 +521,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.xr.xml">
       <PackagePath>CameraFaceDetection.xr.xml</PackagePath>
-      <Modified>2018-09-07T19:57:37.631</Modified>
+      <Modified>2018-09-08T01:48:56.701</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-09-07T20:20:04.920</Modified>
+      <Modified>2018-09-09T03:57:22.798</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-09-07T20:20:04.921</Modified>
+      <Modified>2018-09-09T03:57:22.799</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -530,11 +538,11 @@
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-09-07T13:32:48.710</Modified>
+      <Modified>2018-09-08T01:40:28.159</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\Core\CameraFaceDetection.exe">
       <PackagePath>CameraFaceDetection.exe</PackagePath>
-      <Modified>2018-09-07T20:20:05.573</Modified>
+      <Modified>2018-09-09T03:57:23.178</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

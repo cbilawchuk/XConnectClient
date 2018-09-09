@@ -18,6 +18,7 @@ namespace XConnectClientWebApp.Models
 
         public string Avatar64 { get; set; }
         public string Badge64 { get; set; }
+        public string Title { get; set; }
 
         public string Name
         {

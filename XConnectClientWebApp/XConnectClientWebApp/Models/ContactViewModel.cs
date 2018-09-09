@@ -38,7 +38,14 @@ namespace XConnectClientWebApp.Models
         public string Name {
             get
             {
-                return string.Format("{0} {1}", this.FirstName, this.LastName);
+                if(this.LastName != null && !this.LastName.Equals(""))
+                {
+                    return string.Format("{0} {1}", this.FirstName, this.LastName);
+                } else
+                {
+                    return "Unknown";
+                }
+                
             }
         }
 

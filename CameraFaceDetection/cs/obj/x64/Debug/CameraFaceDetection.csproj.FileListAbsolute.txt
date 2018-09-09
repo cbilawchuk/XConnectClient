@@ -196,6 +196,8 @@ E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\obj\
 E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\obj\x64\Debug\ProjectArchitectures.txt
 E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\obj\x64\Debug\CameraFaceDetection.csprojAssemblyReference.cache
+E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\Assets\app.config
+E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.exe.config
 E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\App.xbf
 E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\MainPage.xbf
 E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x64\Debug\CameraFaceDetection.xr.xml

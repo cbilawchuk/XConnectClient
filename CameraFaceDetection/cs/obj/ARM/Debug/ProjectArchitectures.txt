@@ -1,1 +1,0 @@
-E:\GIT\EXPERMENTAL\Windows-universal-samples\Samples\CameraFaceDetection\cs\CameraFaceDetection.csproj;arm

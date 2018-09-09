@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using XConnectClientWebApp.Models;
 using XConnectClientWebApp.Services;
+using XConnectClientServices.Services;
 
 namespace XConnectClientWebApp.Controllers
 {
@@ -27,7 +28,7 @@ namespace XConnectClientWebApp.Controllers
         {
             ViewBag.Title = "Profile";
            
-            _xc.SetPageViewEvent(User.Identity.Name);
+            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
 
             ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
 
@@ -41,7 +42,7 @@ namespace XConnectClientWebApp.Controllers
             ViewBag.Title = "Edit";
             ViewBag.Message = "Editing contact: " + User.Identity.Name;
 
-            _xc.SetPageViewEvent(User.Identity.Name);
+            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
 
             ContactViewModel model = _cservice.GetContactDetails(id);
 
@@ -70,35 +71,18 @@ namespace XConnectClientWebApp.Controllers
 
 
         [HttpGet]
-        public ActionResult Upload(string Id)
+        public ActionResult Upload(string id)
         {
             ViewBag.Title = "Upload";
             ViewBag.Message = "Upload a profile image.";
 
-            ContactViewModel model = new ContactViewModel(); // _xconnect.GetContactBySource(Id);
+            ContactViewModel model = _cservice.GetContactDetails(id);
 
             return View(model);
         }
 
 
-        [HttpPost]
-        public ActionResult Upload(string id, ContactViewModel model)
-        {
-            ViewBag.Title = "Upload";
-            ViewBag.Message = "Upload a profile image.";
-
-            try
-            {
-                // TODO: Add insert logic here
-                //ContactViewModel model = new XconnectClientService().TestClient();
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View(model);
-            };
-        }
+        
 
 
         public ActionResult FileUpload(HttpPostedFileBase file)

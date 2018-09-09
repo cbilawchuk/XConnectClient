@@ -203,10 +203,10 @@
             <StackPanel Name="EmailBock" Visibility="Collapsed">
                 <TextBlock Style="{StaticResource BasicTextStyle}" TextWrapping="Wrap" HorizontalAlignment="Left" Name="InstructionMsg" Margin="0 0 0 25"/>
                 <TextBlock Style="{StaticResource BasicTextStyle}" HorizontalAlignment="Left" Name="EmailAddressLabel"><Run Text="Email Address"/></TextBlock>
-                    <TextBox x:Name="EmailAddress" MaxLength="320" HorizontalAlignment="Stretch" InputScope="EmailSmtpAddress" Margin="0 5 0 5"/>
+                <TextBox x:Name="EmailAddress" MaxLength="320" HorizontalAlignment="Stretch" InputScope="EmailSmtpAddress" Margin="0 5 0 5" TextChanged="textChangedEventHandler"/>
                     <!--<TextBlock Style="{StaticResource BasicTextStyle}" HorizontalAlignment="Stretch"><Run Text="Phone Number"/></TextBlock>
                     <TextBox x:Name="PhoneNumber" MaxLength="50" HorizontalAlignment="Stretch" InputScope="TelephoneNumber" Margin="0 5 0 5" />-->
-                <Button x:Name="OCRDetectionButton" Click="OCRDetectionButton_Click" Content="Submit Visit" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="True"/>
+                <Button x:Name="OCRDetectionButton" Click="OCRDetectionButton_Click" Content="Submit Visit" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="False"/>
                 <Button x:Name="ResetButton" Click="ResetButton_Click" Content="Reset" HorizontalAlignment="Stretch" Margin="0 5 0 5" IsEnabled="True"/>
             </StackPanel>
 
