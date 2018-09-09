@@ -47,7 +47,7 @@ namespace XConnectClientWebApp.Controllers
                 };
 
 
-                var results = _cservice.SetContactDetails(data.SourceId, model);
+                var results = _cservice.SetOfflineContactDetails(data.SourceId, model);
                 _cservice.SetAvatarPicture(model.SourceId, Convert.FromBase64String(model.AvatarImage));
 
                 

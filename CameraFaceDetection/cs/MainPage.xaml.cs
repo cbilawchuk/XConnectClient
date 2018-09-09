@@ -316,6 +316,8 @@ namespace FaceDetection
                 string results = "";
                 try
                 {
+                    BadgeText.Text = "Processing...";
+
                     visitor.EmailAddress = EmailAddress.Text;
                     visitor.SourceId = ComputeMD5(EmailAddress.Text.Trim());
                     string url = await GetConfig("EventApi");

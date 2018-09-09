@@ -30,17 +30,11 @@ namespace XConnectClientServices.Services
         /// <summary>
         ///     Sitecore Item IDs for goals and channels.
         /// </summary>
-        public static Guid LoginGoalId = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["xconnect.interaction.LoginGoalId"]) ?
-            Guid.Parse("{66722F52-2D13-4DCC-90FC-EA7117CF2298}") //  "Login" goal
-            : Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.LoginGoalId"]);
-
-        public static Guid OnlineGoalId = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["xconnect.interaction.OnlineGoalId"]) ?
-            Guid.Parse("{475E9026-333F-432D-A4DC-52E03B75CB6B}") // "Generic" goal
-            : Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.OnlineGoalId"]);
-
-        public static Guid OnlineChannelId = string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["xconnect.interaction.OnlineChannelId"]) ?
-            Guid.Parse("{59BD107F-D725-4BA1-91C6-61BEE3CB768C}") // "Other apps" channel
-            : Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.OnlineChannelId"]);
+        public static Guid LoginGoalId = Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.LoginGoalId"]);
+        public static Guid OnlineGoalId = Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.OnlineGoalId"]);
+        public static Guid OnlineChannelId = Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.OnlineChannelId"]);
+        public static Guid OfflineGoalId = Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.OfflineGoalId"]);
+        public static Guid OfflineChannelId = Guid.Parse(ConfigurationManager.AppSettings["xconnect.interaction.OfflineChannelId"]);
 
     }
 }

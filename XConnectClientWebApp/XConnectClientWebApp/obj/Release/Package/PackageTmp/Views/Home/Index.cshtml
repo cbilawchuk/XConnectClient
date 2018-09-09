@@ -9,7 +9,7 @@
 <!doctype html>
 <html class="fixed">
 <head>
-
+    <title>Porto Admin Portal</title>
     <!-- Basic -->
     <meta charset="UTF-8">
 
@@ -58,7 +58,7 @@
                     @using (Html.BeginForm("Login", "Home", FormMethod.Post))
                     {
                         @Html.ValidationSummary(true, "Login failed. Check your login details.");
-                         <div class="form-group mb-3">
+                        <div class="form-group mb-3">
                             <label>Username</label>
                             <div class="input-group">
                                 @Html.TextBoxFor(u => u.UserName, new { @class = "form-control form-control-lg", placeholder = "E-mail" })
@@ -139,5 +139,7 @@
     <!-- Theme Initialization Files -->
     <script src="/js/theme.init.js"></script>
     <!-- Analytics to Track Preview Website -->
+
+    <script src="//cm2dev.local/bundle/beacon"></script>
 </body>
 </html>               

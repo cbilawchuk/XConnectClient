@@ -59,7 +59,6 @@ namespace StaticSite.Controllers
         public ActionResult Subscribe(Subscribe data)
         {
             var source = Security.ComputeMD5(data.emailAddress);
-            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
             _cservice.SubscribeContact(source, data);
 
             return View("Index", data);

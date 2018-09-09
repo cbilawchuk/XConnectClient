@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using XConnectClientWebApp.Models;
 using XConnectClientWebApp.Services;
 using XConnectClientServices.Services;
+using XConnectClientServices;
 
 namespace XConnectClientWebApp.Controllers
 {
@@ -27,8 +28,8 @@ namespace XConnectClientWebApp.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Profile";
-           
-            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
+
+            _xc.SetPageViewEvent(Security.ComputeMD5(User.Identity.Name), System.Web.HttpContext.Current.Request);
 
             ContactViewModel model = _cservice.GetContactDetails(User.Identity.Name);
 
@@ -42,7 +43,7 @@ namespace XConnectClientWebApp.Controllers
             ViewBag.Title = "Edit";
             ViewBag.Message = "Editing contact: " + User.Identity.Name;
 
-            _xc.SetPageViewEvent(User.Identity.Name, System.Web.HttpContext.Current.Request);
+            _xc.SetPageViewEvent(Security.ComputeMD5(User.Identity.Name), System.Web.HttpContext.Current.Request);
 
             ContactViewModel model = _cservice.GetContactDetails(id);
 
@@ -56,10 +57,10 @@ namespace XConnectClientWebApp.Controllers
             ViewBag.Title = "Edit";
          
             try
-            {              
-               // _xc.SetPageViewEvent(User.Identity.Name);
+            {
+                _xc.SetPageViewEvent(Security.ComputeMD5(User.Identity.Name), System.Web.HttpContext.Current.Request);
 
-                var results = _cservice.SetContactDetails(User.Identity.Name, model);
+                var results = _cservice.SetOnlineContactDetails(User.Identity.Name, model);
 
                 return RedirectToAction("Index");
             }
@@ -73,6 +74,8 @@ namespace XConnectClientWebApp.Controllers
         [HttpGet]
         public ActionResult Upload(string id)
         {
+            _xc.SetPageViewEvent(Security.ComputeMD5(User.Identity.Name), System.Web.HttpContext.Current.Request);
+
             ViewBag.Title = "Upload";
             ViewBag.Message = "Upload a profile image.";
 

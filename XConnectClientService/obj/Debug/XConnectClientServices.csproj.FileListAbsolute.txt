@@ -69,7 +69,6 @@ E:\GIT\SITECORE\XConnectClient\XConnectClientService\bin\Debug\Sitecore.Framewor
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\bin\Debug\System.Interactive.Async.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\bin\Debug\System.Interactive.Async.Providers.xml
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\bin\Debug\System.Net.Http.Formatting.xml
-E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.csprojAssemblyReference.cache
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.csproj.CoreCompileInputs.cache
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.csproj.CopyComplete
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.dll

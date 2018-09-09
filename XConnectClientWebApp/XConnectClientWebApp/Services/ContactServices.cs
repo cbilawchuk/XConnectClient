@@ -73,8 +73,73 @@ namespace XConnectClientWebApp.Services
             return model;
         }
 
+        public bool SetOnlineContactDetails(string Source, ContactViewModel model)
+        {
+            XConnectClientService _xc = new XConnectClientService();
 
-        public bool SetContactDetails(string Source, ContactViewModel model)
+            // Get or Create a new contact
+            Contact contact = _xc.GetOrSetContact(Source);
+
+            PersonalInformation pi = new PersonalInformation
+            {
+                Title = model.Prefix,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                JobTitle = model.JobTitle,
+                Birthdate = model.Birthday,
+                PreferredLanguage = model.PreferredLanguage,
+                Gender = model.Gender
+            };
+            _xc.SetPersonalInformationFacet(Source, pi);
+
+
+            if (model.Email != null && !model.Email.Equals(""))
+            {
+                // create a preferred email address since this is just one
+                EmailAddress pe = new EmailAddress(model.Email, true);
+
+                // add email to an email facet (List)
+                EmailAddressList el = new EmailAddressList(pe, model.EmailType);
+
+                _xc.SetEmailListFacet(Source, el);
+            }
+
+            if (model.PhoneNumber != null && !model.PhoneNumber.Equals(""))
+            {
+                PhoneNumber ph = new PhoneNumber(model.CountryCode, model.PhoneNumber);
+
+                PhoneNumberList pl = new PhoneNumberList(ph, model.PhoneNumberType);
+
+                _xc.SetPhoneListFacet(Source, pl);
+            }
+
+
+            if (model.AddressLine1 != null)
+            {
+                Address a = new Address
+                {
+                    AddressLine1 = model.AddressLine1,
+                    AddressLine2 = model.AddressLine2,
+                    City = model.City,
+                    StateOrProvince = model.State,
+                    CountryCode = model.CountryCode,
+                    PostalCode = model.PostalCode
+                };
+
+                AddressList al = new AddressList(a, model.EmailType);  // Using emailType =='Work' since don't have a address type in model.
+
+                _xc.SetAddressListFacet(Source, al);
+            }
+
+
+            _xc.SetGoal(Source, XConnectSettings.OnlineGoalId, XConnectSettings.OnlineChannelId, "PortoAdminPortal (Windows NT 10.0; Win64; x64)");
+
+            
+
+            return true;
+        }
+
+        public bool SetOfflineContactDetails(string Source, ContactViewModel model)
         {
             XConnectClientService _xc = new XConnectClientService();
 
@@ -133,11 +198,12 @@ namespace XConnectClientWebApp.Services
             }
 
 
-            _xc.SetGoal(Source, XConnectSettings.OnlineGoalId);
+            _xc.SetTradeShowEvent(Source,HttpContext.Current.Request, XConnectSettings.OfflineGoalId, XConnectSettings.OfflineChannelId);
+
+
 
             return true;
         }
-
 
         public bool SetAvatarPicture(string Source, byte[] array)
         {

@@ -74,28 +74,25 @@ namespace StaticSite.Services
         }
 
 
-        public bool SetContactDetails(string Source, ContactViewModel model)
+        public bool SetOnlineContactDetails(string Source, ContactViewModel model)
         {
             XConnectClientService _xc = new XConnectClientService();
 
             // Get or Create a new contact
             Contact contact = _xc.GetOrSetContact(Source);
 
-            if (model.FirstName != null && !model.FirstName.Equals("") && model.LastName != null && !model.LastName.Equals(""))
+            PersonalInformation pi = new PersonalInformation
             {
+                Title = model.Prefix,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                JobTitle = model.JobTitle,
+                Birthdate = model.Birthday,
+                PreferredLanguage = model.PreferredLanguage,
+                Gender = model.Gender
+            };
+            _xc.SetPersonalInformationFacet(Source, pi);
 
-                PersonalInformation pi = new PersonalInformation
-                {
-                    Title = model.Prefix,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    JobTitle = model.JobTitle,
-                    Birthdate = model.Birthday,
-                    PreferredLanguage = model.PreferredLanguage,
-                    Gender = model.Gender
-                };
-                _xc.SetPersonalInformationFacet(Source, pi);
-            }
 
             if (model.Email != null && !model.Email.Equals(""))
             {
@@ -108,7 +105,7 @@ namespace StaticSite.Services
                 _xc.SetEmailListFacet(Source, el);
             }
 
-            if (model.PhoneNumber !=null && !model.PhoneNumber.Equals(""))
+            if (model.PhoneNumber != null && !model.PhoneNumber.Equals(""))
             {
                 PhoneNumber ph = new PhoneNumber(model.CountryCode, model.PhoneNumber);
 
@@ -135,6 +132,11 @@ namespace StaticSite.Services
                 _xc.SetAddressListFacet(Source, al);
             }
 
+
+            _xc.SetGoal(Source, XConnectSettings.OnlineGoalId, XConnectSettings.OnlineChannelId, "CanvasDesignStudio (Windows NT 10.0; Win64; x64)");
+
+            
+
             return true;
         }
 
@@ -156,9 +158,8 @@ namespace StaticSite.Services
                 // add email to an email facet (List)
                 EmailAddressList el = new EmailAddressList(pe, "Unknown");
 
-                _xc.SetEmailListFacet(Source, el);
-                
-                _xc.SetGoal(Source, XConnectSettings.OnlineGoalId);
+                _xc.SetNewsletterSignupEvent(Source, System.Web.HttpContext.Current.Request, XConnectSettings.OnlineGoalId, XConnectSettings.OnlineChannelId, el);
+
             }
 
            

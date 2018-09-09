@@ -23,8 +23,6 @@ namespace XConnectClientServices.Services
     {
         public void SetPageViewEvent(string Source, HttpRequest request)
         {
-            //HttpRequest request = HttpContext.Current.Request;
-
             if(Source == null || Source.Equals(""))
             {
                 Source = Guid.NewGuid().ToString();
@@ -51,7 +49,168 @@ namespace XConnectClientServices.Services
 
 
                     // Add PageViewEvent
-                    interaction.Events.Add(this.GetPageViewEvent(request));
+                    interaction.Events.Add(this.GetPageViewEvent(request, Guid.Parse(Security.ComputeMD5(request.Url.ToString()))));
+
+                    // Apply facets and events, and submit
+                    client.AddInteraction(interaction);
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+
+        public void SetLoginEvent(string Source, HttpRequest request, Guid goalID, Guid channelID)
+        {
+            if (Source == null || Source.Equals(""))
+            {
+                Source = Guid.NewGuid().ToString();
+            }
+
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            // Add an Interaction
+            var interaction = this.RegisterInteraction(contact, InteractionInitiator.Brand, channelID, GetUserAgenet(request));
+
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    //Add Device profile
+                    interaction = AddDeviceProfile(client, contact, interaction);
+
+                    // Add goal
+                    var goal = new Goal(goalID, DateTime.UtcNow);
+                    goal.EngagementValue = 20;
+                    interaction.Events.Add(goal);
+
+                    // Add IpInfo Facet
+                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request));
+
+                    // Add WebVisit Facet
+                    client.SetFacet<WebVisit>(interaction, WebVisit.DefaultFacetKey, this.GetWebVisitFacet(request));
+
+
+                    // Add PageViewEvent
+                    interaction.Events.Add(this.GetPageViewEvent(request, Guid.Parse(Security.ComputeMD5(request.Url.ToString()))));
+
+                    // Apply facets and events, and submit
+                    client.AddInteraction(interaction);
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+
+        public void SetNewsletterSignupEvent(string Source, HttpRequest request, Guid goalID, Guid channelID, EmailAddressList emailFacet)
+        {
+            if (Source == null || Source.Equals(""))
+            {
+                Source = Guid.NewGuid().ToString();
+            }
+
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            // Add an Interaction
+            var interaction = this.RegisterInteraction(contact, InteractionInitiator.Brand, channelID, GetUserAgenet(request));
+
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    //Add Device profile
+                    interaction = AddDeviceProfile(client, contact, interaction);
+
+                    // Add goal
+                    var goal = new Goal(goalID, DateTime.UtcNow);
+                    goal.EngagementValue = 20;
+                    interaction.Events.Add(goal);
+
+                    // Add IpInfo Facet
+                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request));
+
+                    // Add WebVisit Facet
+                    client.SetFacet<WebVisit>(interaction, WebVisit.DefaultFacetKey, this.GetWebVisitFacet(request));
+
+                    var oldfacet = contact.GetFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
+
+                    if (oldfacet != null)
+                    {
+                        oldfacet.PreferredEmail = emailFacet.PreferredEmail;
+                        oldfacet.PreferredKey = emailFacet.PreferredKey;
+
+                        // Set the updated facet
+                        client.SetFacet<EmailAddressList>(contact, EmailAddressList.DefaultFacetKey, oldfacet);
+                    }
+                    else
+                    {
+                        //Add facet
+                        client.SetEmails(contact, emailFacet);
+                        //client.SetFacet<EmailAddressList>(new FacetReference(contact, EmailAddressList.DefaultFacetKey), newfacet);
+                    }
+
+
+                    // Add PageViewEvent
+                    interaction.Events.Add(this.GetPageViewEvent(request, Guid.Parse(Security.ComputeMD5(request.Url.ToString()))));
+
+                    // Apply facets and events, and submit
+                    client.AddInteraction(interaction);
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+        public void SetTradeShowEvent(string Source, HttpRequest request, Guid goalID, Guid channelID)
+        {
+            if (Source == null || Source.Equals(""))
+            {
+                Source = Guid.NewGuid().ToString();
+            }
+
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    // Add an Interaction
+                    var interaction = this.RegisterInteraction(contact, InteractionInitiator.Brand, channelID, GetUserAgenet(request));
+
+
+                    //Add Device profile
+                    //interaction = AddDeviceProfile(client, contact, interaction);
+
+                    // Add goal
+                    var goal = new Goal(goalID, DateTime.UtcNow);
+                    goal.EngagementValue = 50;
+                    interaction.Events.Add(goal);
+
+                    // Add IpInfo Facet
+                    //client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request));
+
+                    // Add WebVisit Facet
+                    //client.SetFacet<WebVisit>(interaction, WebVisit.DefaultFacetKey, this.GetWebVisitFacet(request));
+
+                    // Add PageViewEvent
+                    //interaction.Events.Add(this.GetPageViewEvent(request, Guid.Parse(Security.ComputeMD5(request.Url.ToString()))));
 
                     // Apply facets and events, and submit
                     client.AddInteraction(interaction);
@@ -217,7 +376,6 @@ namespace XConnectClientServices.Services
             }
         }
 
-
         public void SetAvatarFacet(string Source, Avatar newfacet)
         {
             // Get or Create a new contact
@@ -255,7 +413,7 @@ namespace XConnectClientServices.Services
 
 
 
-        public void SetGoal(string Source, Guid goalID)
+        public void SetGoal(string Source, Guid goalID, Guid channelID, string userAgent)
         {
             // Get or Create a new contact
             var contact = this.GetOrSetContact(Source);
@@ -264,14 +422,59 @@ namespace XConnectClientServices.Services
             {
                 try
                 {
-                    var interaction = RegisterInteraction(contact, InteractionInitiator.Contact);
-
-                    var goal = new Goal(goalID, DateTime.UtcNow);
-                    goal.EngagementValue = 20; // Manually setting engagement value rather than going to defintion item
-
+                    var interaction = RegisterInteraction(contact, InteractionInitiator.Brand, channelID, userAgent);                    
+                    var goal = new Goal(goalID, DateTime.UtcNow);                    
+                    goal.EngagementValue = 20; 
                     interaction.Events.Add(goal);
                     client.AddInteraction(interaction);
 
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    //Failure: return null and log the errors.
+                    Console.Write(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+
+        //public void SetChannel(string Source, Guid channelID, string userAgent)
+        //{
+        //    // Get or Create a new contact
+        //    var contact = this.GetOrSetContact(Source);
+
+        //    using (XConnectClient client = GetXConnectClient())
+        //    {
+        //        try
+        //        {
+        //            var interaction = RegisterInteraction(contact, InteractionInitiator.Brand, channelID, userAgent);
+        //            interaction.Events.Add(goal);
+        //            client.AddInteraction(interaction);
+        //            client.Submit();
+        //        }
+        //        catch (XdbExecutionException ex)
+        //        {
+        //            //Failure: return null and log the errors.
+        //            Console.Write(ex.Message + ex.StackTrace);
+        //        }
+        //    }
+        //}
+
+
+        public void SetOutcome(string Source, Guid outcomeID, Guid channelID, string userAgent, decimal value)
+        {
+            // Get or Create a new contact
+            var contact = this.GetOrSetContact(Source);
+
+            using (XConnectClient client = GetXConnectClient())
+            {
+                try
+                {
+                    var interaction = RegisterInteraction(contact, InteractionInitiator.Brand, channelID, userAgent);
+                    var outcome = new Outcome(outcomeID, DateTime.UtcNow, "USD", value); //10.00m
+                    interaction.Events.Add(outcome);
+                    client.AddInteraction(interaction);
                     client.Submit();
                 }
                 catch (XdbExecutionException ex)
@@ -322,7 +525,7 @@ namespace XConnectClientServices.Services
             {
                 Browser = GetBrowser(request),
                 Language = GetUserLanguage(request),
-                //OperatingSystem = "",
+                //OperatingSystem = request.Browser.Platform,
                 Referrer = request.UrlReferrer.AbsoluteUri,
                 IsSelfReferrer = IsSelfReferrer(request.UrlReferrer.AbsoluteUri),
                 Screen = new ScreenData { ScreenWidth = request.Browser.ScreenPixelsWidth, ScreenHeight = request.Browser.ScreenPixelsHeight},
@@ -372,9 +575,9 @@ namespace XConnectClientServices.Services
             return null;
         }
 
-        private PageViewEvent GetPageViewEvent(HttpRequest request)
+        private PageViewEvent GetPageViewEvent(HttpRequest request, Guid pageID)
         {
-            PageViewEvent pageView = new PageViewEvent(DateTime.UtcNow, Guid.NewGuid(), 1, GetUserLanguage(request));
+            PageViewEvent pageView = new PageViewEvent(DateTime.UtcNow, pageID, 1, GetUserLanguage(request));
             pageView.Url = request.Url.ToString();
 
             return pageView;
@@ -531,6 +734,28 @@ namespace XConnectClientServices.Services
             
         }
 
+        private Interaction RegisterInteraction(Contact contact, InteractionInitiator initiator, Guid channel, string userAgent)
+        {
+            try
+            {
+                //Create the basic interaction and then add additional data as needed
+                Interaction interaction = new Interaction(
+                    contact,
+                    initiator,
+                    channelId: channel,
+                    userAgent: userAgent
+                    );
+
+                return interaction;
+            }
+            catch (XdbExecutionException ex)
+            {
+                Console.Write(ex.Message + ex.StackTrace);
+                return null;
+            }
+
+        }
+
         private String GetIP(HttpRequest request)
         {
             String ip = request.ServerVariables["HTTP_X_FORWARDED_FOR"];
@@ -563,6 +788,26 @@ namespace XConnectClientServices.Services
         }
 
 
-     
+        private string GetUserAgenet(HttpRequest request)
+        {
+            if (request != null)
+            {
+                UserAgentInfo agent = new UserAgentInfo
+                {
+                    DeviceType = request.Browser.Type,
+                    DeviceVendor = request.Browser.Browser,
+                    DeviceVendorHardwareModel = request.Browser.Platform
+                };
+
+                return agent.ToString();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
     }
 }

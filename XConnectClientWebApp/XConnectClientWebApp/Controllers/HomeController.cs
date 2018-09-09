@@ -33,7 +33,7 @@ namespace XConnectClientWebApp.Controllers
 
                     FormsAuthentication.SetAuthCookie(userId, user.RememberMe);
 
-                    _xc.SetPageViewEvent(userId, System.Web.HttpContext.Current.Request);
+                    _xc.SetLoginEvent(userId, System.Web.HttpContext.Current.Request, XConnectSettings.LoginGoalId, XConnectSettings.OnlineChannelId);
 
 
                     return RedirectToAction("Index", "App");
@@ -47,8 +47,7 @@ namespace XConnectClientWebApp.Controllers
         }
         public ActionResult Logout()
         {
-            var userId = Security.ComputeMD5(User.Identity.Name);
-            _xc.SetPageViewEvent(userId, System.Web.HttpContext.Current.Request);
+            _xc.SetPageViewEvent(Security.ComputeMD5(User.Identity.Name), System.Web.HttpContext.Current.Request);
 
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
