@@ -73,3 +73,4 @@ E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientSer
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.csproj.CopyComplete
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.dll
 E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.pdb
+E:\GIT\SITECORE\XConnectClient\XConnectClientService\obj\Debug\XConnectClientServices.csprojAssemblyReference.cache

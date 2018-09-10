@@ -42,7 +42,7 @@ namespace XConnectClientServices.Services
                     interaction = AddDeviceProfile(client, contact, interaction);
 
                     // Add IpInfo Facet
-                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request));
+                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request, ""));
 
                     // Add WebVisit Facet
                     client.SetFacet<WebVisit>(interaction, WebVisit.DefaultFacetKey, this.GetWebVisitFacet(request));
@@ -90,7 +90,7 @@ namespace XConnectClientServices.Services
                     interaction.Events.Add(goal);
 
                     // Add IpInfo Facet
-                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request));
+                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request, ""));
 
                     // Add WebVisit Facet
                     client.SetFacet<WebVisit>(interaction, WebVisit.DefaultFacetKey, this.GetWebVisitFacet(request));
@@ -138,7 +138,7 @@ namespace XConnectClientServices.Services
                     interaction.Events.Add(goal);
 
                     // Add IpInfo Facet
-                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request));
+                    client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request, ""));
 
                     // Add WebVisit Facet
                     client.SetFacet<WebVisit>(interaction, WebVisit.DefaultFacetKey, this.GetWebVisitFacet(request));
@@ -176,7 +176,7 @@ namespace XConnectClientServices.Services
             }
         }
 
-        public void SetTradeShowEvent(string Source, HttpRequest request, Guid goalID, Guid channelID)
+        public void SetTradeShowEvent(string Source, HttpRequest request, Guid goalID, Guid channelID, PersonalInformation personalFacet, EmailAddressList emailFacet, string company)
         {
             if (Source == null || Source.Equals(""))
             {
@@ -195,6 +195,46 @@ namespace XConnectClientServices.Services
                     var interaction = this.RegisterInteraction(contact, InteractionInitiator.Brand, channelID, GetUserAgenet(request));
 
 
+                    var oldPersonalfacet = contact.GetFacet<PersonalInformation>(PersonalInformation.DefaultFacetKey);
+
+                    if (oldPersonalfacet != null)
+                    {
+                        oldPersonalfacet.Title = personalFacet.Title;
+                        oldPersonalfacet.FirstName = personalFacet.FirstName;
+                        oldPersonalfacet.LastName = personalFacet.LastName;
+                        oldPersonalfacet.JobTitle = personalFacet.JobTitle;
+                        oldPersonalfacet.Birthdate = personalFacet.Birthdate;
+                        oldPersonalfacet.PreferredLanguage = personalFacet.PreferredLanguage;
+                        oldPersonalfacet.Gender = personalFacet.Gender;
+
+                        // Set the updated facet
+                        client.SetFacet<PersonalInformation>(contact, PersonalInformation.DefaultFacetKey, oldPersonalfacet);
+                    }
+                    else
+                    {
+                        //Add facet
+                        client.SetPersonal(contact, personalFacet);
+                    }
+
+
+                    var oldfacet = contact.GetFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
+
+                    if (oldfacet != null)
+                    {
+                        oldfacet.PreferredEmail = emailFacet.PreferredEmail;
+                        oldfacet.PreferredKey = emailFacet.PreferredKey;
+
+                        // Set the updated facet
+                        client.SetFacet<EmailAddressList>(contact, EmailAddressList.DefaultFacetKey, oldfacet);
+                    }
+                    else
+                    {
+                        //Add facet
+                        client.SetEmails(contact, emailFacet);
+                        //client.SetFacet<EmailAddressList>(new FacetReference(contact, EmailAddressList.DefaultFacetKey), newfacet);
+                    }
+
+
                     //Add Device profile
                     //interaction = AddDeviceProfile(client, contact, interaction);
 
@@ -204,7 +244,7 @@ namespace XConnectClientServices.Services
                     interaction.Events.Add(goal);
 
                     // Add IpInfo Facet
-                    //client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request));
+                    //client.SetFacet<IpInfo>(interaction, IpInfo.DefaultFacetKey, this.GetIpInfoFacet(request, company));
 
                     // Add WebVisit Facet
                     //client.SetFacet<WebVisit>(interaction, WebVisit.DefaultFacetKey, this.GetWebVisitFacet(request));
@@ -496,13 +536,13 @@ namespace XConnectClientServices.Services
             return interaction;
         }
 
-        private  IpInfo GetIpInfoFacet(HttpRequest request)
+        private  IpInfo GetIpInfoFacet(HttpRequest request, string company)
         {
             //Add Ip info
             IpInfo ipInfo = new IpInfo(this.GetIP(request))
             {
                 AreaCode = "",
-                BusinessName = "",
+                BusinessName = company,
                 City = "",
                 Country = ResolveCountry(request).ThreeLetterWindowsRegionName,
                 Isp = "",
@@ -756,13 +796,16 @@ namespace XConnectClientServices.Services
 
         }
 
-        private String GetIP(HttpRequest request)
+        private string GetIP(HttpRequest request)
         {
-            String ip = request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            string ip = request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
-            if (string.IsNullOrEmpty(ip))
+            if (ip != null && !(ip.Equals("") || ip.Equals("::1")))
             {
                 ip = request.ServerVariables["REMOTE_ADDR"];
+            } else
+            {
+                ip = "127.0.0.1";
             }
 
             return ip;

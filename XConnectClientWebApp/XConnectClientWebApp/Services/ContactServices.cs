@@ -154,51 +154,51 @@ namespace XConnectClientWebApp.Services
                 JobTitle = model.JobTitle,
                 Birthdate = model.Birthday,
                 PreferredLanguage = model.PreferredLanguage,
-                Gender = model.Gender
+                Gender = model.Gender                
             };
-            _xc.SetPersonalInformationFacet(Source, pi);
+            //_xc.SetPersonalInformationFacet(Source, pi);
 
-
-            if (model.Email != null && !model.Email.Equals(""))
-            {
+            
+            //if (model.Email != null && !model.Email.Equals(""))
+            //{
                 // create a preferred email address since this is just one
                 EmailAddress pe = new EmailAddress(model.Email, true);
 
                 // add email to an email facet (List)
                 EmailAddressList el = new EmailAddressList(pe, model.EmailType);
 
-                _xc.SetEmailListFacet(Source, el);
-            }
+                //_xc.SetEmailListFacet(Source, el);
+            //}
 
-            if (model.PhoneNumber !=null && !model.PhoneNumber.Equals(""))
-            {
-                PhoneNumber ph = new PhoneNumber(model.CountryCode, model.PhoneNumber);
+            //if (model.PhoneNumber !=null && !model.PhoneNumber.Equals(""))
+            //{
+            //    PhoneNumber ph = new PhoneNumber(model.CountryCode, model.PhoneNumber);
 
-                PhoneNumberList pl = new PhoneNumberList(ph, model.PhoneNumberType);
+            //    PhoneNumberList pl = new PhoneNumberList(ph, model.PhoneNumberType);
 
-                _xc.SetPhoneListFacet(Source, pl);
-            }
-
-
-            if (model.AddressLine1 != null)
-            {
-                Address a = new Address
-                {
-                    AddressLine1 = model.AddressLine1,
-                    AddressLine2 = model.AddressLine2,
-                    City = model.City,
-                    StateOrProvince = model.State,
-                    CountryCode = model.CountryCode,
-                    PostalCode = model.PostalCode
-                };
-
-                AddressList al = new AddressList(a, model.EmailType);  // Using emailType =='Work' since don't have a address type in model.
-
-                _xc.SetAddressListFacet(Source, al);
-            }
+            //    _xc.SetPhoneListFacet(Source, pl);
+            //}
 
 
-            _xc.SetTradeShowEvent(Source,HttpContext.Current.Request, XConnectSettings.OfflineGoalId, XConnectSettings.OfflineChannelId);
+            //if (model.AddressLine1 != null)
+            //{
+            //    Address a = new Address
+            //    {
+            //        AddressLine1 = model.AddressLine1,
+            //        AddressLine2 = model.AddressLine2,
+            //        City = model.City,
+            //        StateOrProvince = model.State,
+            //        CountryCode = model.CountryCode,
+            //        PostalCode = model.PostalCode
+            //    };
+
+            //    AddressList al = new AddressList(a, model.EmailType);  // Using emailType =='Work' since don't have a address type in model.
+
+            //    _xc.SetAddressListFacet(Source, al);
+            //}
+
+
+            _xc.SetTradeShowEvent(Source,HttpContext.Current.Request, XConnectSettings.OfflineGoalId, XConnectSettings.OfflineChannelId, pi, el, model.Company);
 
 
 

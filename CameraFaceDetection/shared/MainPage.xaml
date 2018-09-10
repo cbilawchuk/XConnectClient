@@ -32,7 +32,7 @@
 
     
     <Grid VerticalAlignment="Stretch" 
-          HorizontalAlignment="Stretch">
+          HorizontalAlignment="Stretch" Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
@@ -199,7 +199,13 @@
             </Grid>
 
             <TextBlock Style="{StaticResource BasicTextStyle}" Name="BadgeText" Margin="0 30 0 10" FontSize="18" TextWrapping="WrapWholeWords" Text="Ready. Please step up to the camera."/>
-            
+
+            <!--<TextBlock Style="{StaticResource BasicTextStyle}" Name="BadgeName" Margin="0 0 0 10" FontSize="18" TextWrapping="WrapWholeWords" Text="Mickey Mouse"/>
+            <TextBlock Style="{StaticResource BasicTextStyle}" Name="BadgeTitle" Margin="0 0 0 10" FontSize="18" TextWrapping="WrapWholeWords" Text="President"/>
+            <TextBlock Style="{StaticResource BasicTextStyle}" Name="BadgeCompany" Margin="0 0 0 10" FontSize="18" TextWrapping="WrapWholeWords" Text="Company"/>
+            <TextBlock Style="{StaticResource BasicTextStyle}" Name="BadgeRelationShip" Margin="0 0 0 10" FontSize="18" TextWrapping="WrapWholeWords" Text="Media"/>-->
+
+
             <StackPanel Name="EmailBock" Visibility="Collapsed">
                 <TextBlock Style="{StaticResource BasicTextStyle}" TextWrapping="Wrap" HorizontalAlignment="Left" Name="InstructionMsg" Margin="0 0 0 25"/>
                 <TextBlock Style="{StaticResource BasicTextStyle}" HorizontalAlignment="Left" Name="EmailAddressLabel"><Run Text="Email Address"/></TextBlock>

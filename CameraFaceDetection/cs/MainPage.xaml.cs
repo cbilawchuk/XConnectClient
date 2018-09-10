@@ -317,6 +317,7 @@ namespace FaceDetection
                 try
                 {
                     BadgeText.Text = "Processing...";
+                    InstructionMsg.Visibility = Visibility.Collapsed;
 
                     visitor.EmailAddress = EmailAddress.Text;
                     visitor.SourceId = ComputeMD5(EmailAddress.Text.Trim());

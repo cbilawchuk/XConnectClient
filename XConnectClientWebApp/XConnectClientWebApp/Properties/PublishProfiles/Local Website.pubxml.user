@@ -340,19 +340,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/23/2014 12:57:34</publishTime>
     </File>
     <File Include="bin/XConnectClientServices.dll">
-      <publishTime>09/09/2018 17:31:10</publishTime>
+      <publishTime>09/09/2018 21:45:13</publishTime>
     </File>
     <File Include="bin/XConnectClientServices.dll.config">
       <publishTime>09/08/2018 16:32:45</publishTime>
     </File>
     <File Include="bin/XConnectClientServices.pdb">
-      <publishTime>09/09/2018 17:31:10</publishTime>
+      <publishTime>09/09/2018 21:45:13</publishTime>
     </File>
     <File Include="bin/XConnectClientWebApp.dll">
-      <publishTime>09/09/2018 17:31:10</publishTime>
+      <publishTime>09/09/2018 21:45:14</publishTime>
     </File>
     <File Include="bin/XConnectClientWebApp.pdb">
-      <publishTime>09/09/2018 17:31:10</publishTime>
+      <publishTime>09/09/2018 21:45:14</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>08/29/2018 11:30:34</publishTime>
