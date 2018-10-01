@@ -7,7 +7,7 @@ using System.Web.Routing;
 
 namespace StaticSite
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class CanvasDesignStudio : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
