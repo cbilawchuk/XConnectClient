@@ -8,5 +8,6 @@ namespace CanvasEcomm.Models
     public class HomeViewModel
     {
         public bool ShowPopup { get; set; }
+        public string AssistKey { get; set; }
     }
 }

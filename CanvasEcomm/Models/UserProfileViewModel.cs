@@ -10,7 +10,7 @@ namespace CanvasEcomm.Models
     {
         public UserProfileViewModel(ProductCustomFacet facet, string tagline)
         {
-            this.Title = facet.AccountID;
+            this.Title = facet.AssistKey;
             this.Tagline = tagline;
             //this.Category = category;
 

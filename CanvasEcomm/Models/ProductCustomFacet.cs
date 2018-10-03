@@ -8,7 +8,7 @@ namespace CanvasEcomm.Models
     public class ProductCustomFacet
     {
 
-        public string AccountID { get; set; }
+        public string AssistKey { get; set; }
         public IEnumerable<string> SKU_History { get; set; }
         
     }
