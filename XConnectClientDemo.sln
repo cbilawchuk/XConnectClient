@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraFaceDetection", "CameraFaceDetection\cs\CameraFaceDetection.csproj", "{60552DA9-BA74-59F8-81E1-13FEC188A46D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanvasDesignStudio", "StaticSite\CanvasDesignStudio.csproj", "{DA90A0DD-24F4-42DD-916E-6398C44EF346}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanvasDesignStudio", "CanvasDesignStudio\CanvasDesignStudio.csproj", "{DA90A0DD-24F4-42DD-916E-6398C44EF346}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XConnectClientServices", "XConnectClientService\XConnectClientServices.csproj", "{3F9C230D-2E5F-4596-A5F8-18C46F6B3B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortoAdminPortal", "XConnectClientWebApp\PortoAdminPortal.csproj", "{1732679E-E3E2-4F05-A411-E0A16D1BF2CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortoAdminPortal", "PortoAdminPortal\PortoAdminPortal.csproj", "{1732679E-E3E2-4F05-A411-E0A16D1BF2CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanvasEcomm", "CanvasEcomm\CanvasEcomm.csproj", "{28548AC8-5646-4FA5-A66B-086CABE0D966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,18 @@ Global
 		{1732679E-E3E2-4F05-A411-E0A16D1BF2CE}.Release|x64.Build.0 = Release|Any CPU
 		{1732679E-E3E2-4F05-A411-E0A16D1BF2CE}.Release|x86.ActiveCfg = Release|Any CPU
 		{1732679E-E3E2-4F05-A411-E0A16D1BF2CE}.Release|x86.Build.0 = Release|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Debug|x64.Build.0 = Debug|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Debug|x86.Build.0 = Debug|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Release|x64.ActiveCfg = Release|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Release|x64.Build.0 = Release|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Release|x86.ActiveCfg = Release|Any CPU
+		{28548AC8-5646-4FA5-A66B-086CABE0D966}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

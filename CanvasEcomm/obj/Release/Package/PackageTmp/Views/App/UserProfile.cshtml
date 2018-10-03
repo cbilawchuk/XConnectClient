@@ -1,0 +1,65 @@
+﻿@using CanvasEcomm.Models
+@{ 
+    Layout = "~/Views/Shared/_LayoutLite.cshtml";
+}
+
+@model PageViewModel
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>@Model.Title</h1>
+        <span>@Model.Tagline</span>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "App")">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Category</li>
+        </ol>
+    </div>
+</section>
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+
+            <div id="shop" class="shop product-3 grid-container clearfix" data-layout="fitRows">
+
+                @foreach (var product in Model.Products)
+                {
+                    <div class="product clearfix">
+                        <div class="product-image">
+                            <a href="@Url.Action("Details", "App", new { Id=product.SKU })"><img src="@product.Images.First()" alt="@product.Name"></a>
+                            <a href="@Url.Action("Details", "App", new { Id=product.SKU })"><img src="@product.Images.Last()" alt="@product.Name"></a>
+                            @if (product.OnSale)
+                            {
+                                <div class="sale-flash">@((((product.MSRP-product.Price)/product.MSRP)*100).ToString("00"))% Off*</div>
+                            }
+                            <div class="product-overlay">
+                                <a href="@Url.Action("Details", "App", new { Id=product.SKU })" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Learn More</span></a>
+                                <a href="@Url.Action("Details", "App", new { Id=product.SKU })" class="item-quick-view"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
+                            </div>
+                        </div>
+                        <div class="product-desc center">
+                            <div class="product-title"><h3><a href="@Url.Action("Details", "App", new { Id=product.SKU })">@product.Name</a></h3></div>
+                            <div class="product-price">
+                                @if (product.OnSale)
+                                {
+                                    <del>$@product.MSRP</del> <ins>$@product.Price</ins>
+                                }
+                                else
+                                {
+                                    @("$" + product.Price);
+                                }
+                            </div>
+                            <div class="product-rating">
+                                <i class="icon-star3"></i>
+                                <i class="icon-star3"></i>
+                                <i class="icon-star3"></i>
+                                <i class="icon-star-half-full"></i>
+                                <i class="icon-star-empty"></i>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

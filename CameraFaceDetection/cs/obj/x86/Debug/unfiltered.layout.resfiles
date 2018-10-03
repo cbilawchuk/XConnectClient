@@ -1,3 +1,4 @@
+WinMetadata\Windows.winmd
 Assets\app.config
 Assets\badge-logo.png
 Assets\microsoft-sdk.png
@@ -14,4 +15,3 @@ App.xbf
 CameraFaceDetection.xr.xml
 MainPage.xbf
 Properties\Default.rd.xml
-WinMetadata\Windows.winmd

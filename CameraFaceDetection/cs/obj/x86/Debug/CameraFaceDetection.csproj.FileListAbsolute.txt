@@ -599,3 +599,6 @@ C:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\obj\x86\Debug\qualifiers.t
 C:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\obj\x86\Debug\qualifiers.txt.intermediate
 C:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\obj\x86\Debug\ProjectArchitectures.txt
+E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x86\Debug\Assets\app.config
+E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\bin\x86\Debug\CameraFaceDetection.exe.config
+E:\GIT\SITECORE\XConnectClient\CameraFaceDetection\cs\obj\x86\Debug\CameraFaceDetection.csprojAssemblyReference.cache

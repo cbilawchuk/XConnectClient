@@ -1,0 +1,1 @@
+E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\PersonalShopper.csproj;x86
