@@ -20,48 +20,54 @@ namespace CanvasEcomm.Services
             var p1 = new Product
             {
                 ID = 1,
-                Category = "men",
+                Category = "Men",
                 Name = "Slim FitChinos",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 39.99,
                 Price = 39.99,
                 OnSale = false,
                 SKU = "10001ABC-01",
-                Size = "Small, Medium, large",
+                Size = "Medium",
                 Color = "Khaki",
-                Images = new List<string> { "/images/shop/pants/1-1.jpg", "/images/shop/pants/1.jpg" }
+                Images = new List<string> { "/images/shop/pants/1-1.jpg", "/images/shop/pants/1.jpg" },
+                SubCategory="Pants",
+                Classification = "Chinos"
             };
             _products.Add(p1);
 
             var p2 = new Product
             {
                 ID = 2,
-                Category = "men",
+                Category = "Men",
                 Name = "Blue Round-Neck Tshirt",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 19.99,
                 Price = 19.99,
                 OnSale = false,
                 SKU = "10001ABC-02",
-                Size = "Small, Medium, large",
+                Size = "Small",
                 Color = "Blue",
-                Images = new List<string> { "/images/shop/tshirts/1.jpg", "/images/shop/tshirts/1-1.jpg" }
+                Images = new List<string> { "/images/shop/tshirts/1.jpg", "/images/shop/tshirts/1-1.jpg" },
+                SubCategory="Shirts",
+                Classification= "Tshirt"
             };
             _products.Add(p2);
 
             var p3 = new Product
             {
                 ID = 3,
-                Category = "men",
+                Category = "Men",
                 Name = "Green Trousers",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 24.99,
                 Price = 20.99,
                 OnSale = true,
                 SKU = "10001ABC-03",
-                Size = "Small, Medium, large",
+                Size = "Large",
                 Color = "Green",
-                Images = new List<string> { "/images/shop/pants/5.jpg", "/images/shop/pants/5-1.jpg" }
+                Images = new List<string> { "/images/shop/pants/5.jpg", "/images/shop/pants/5-1.jpg" },
+                SubCategory="Pants",
+                Classification="Trouser"
             };
             _products.Add(p3);
 
@@ -69,7 +75,7 @@ namespace CanvasEcomm.Services
             var p4 = new Product
             {
                 ID = 4,
-                Category = "men",
+                Category = "Men",
                 Name = "Black Polo Shirt",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 32.99,
@@ -78,14 +84,16 @@ namespace CanvasEcomm.Services
                 SKU = "10001ABC-04",
                 Size = "Medium",
                 Color = "Black",
-                Images = new List<string> { "/images/shop/tshirts/4.jpg", "/images/shop/tshirts/4-1.jpg" }
+                Images = new List<string> { "/images/shop/tshirts/4.jpg", "/images/shop/tshirts/4-1.jpg" },
+                SubCategory="Shirt",
+                Classification="Polo"
             };
             _products.Add(p4);
 
             var p5 = new Product
             {
                 ID = 5,
-                Category = "accessories",
+                Category = "Accessories",
                 Name = "Silver Chrome Watch",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 229.99,
@@ -94,7 +102,9 @@ namespace CanvasEcomm.Services
                 SKU = "10001ABC-05",
                 Size = "Big",
                 Color = "Silver",
-                Images = new List<string> { "/images/shop/watches/1.jpg", "/images/shop/watches/1-1.jpg" }
+                Images = new List<string> { "/images/shop/watches/1.jpg", "/images/shop/watches/1-1.jpg" },
+                SubCategory="Hardware",
+                Classification="Watch"
             };
             _products.Add(p5);
 
@@ -102,32 +112,36 @@ namespace CanvasEcomm.Services
             var p6 = new Product
             {
                 ID = 6,
-                Category = "women",
+                Category = "Women",
                 Name = "Pink Printed Dress",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 65.99,
                 Price = 65.99,
                 OnSale = false,
                 SKU = "10001ABC-06",
-                Size = "Small, Medium",
+                Size = "Small",
                 Color = "Pink, Light Pink",
-                Images = new List<string> { "/images/shop/dress/3.jpg", "/images/shop/dress/3-1.jpg" }
+                Images = new List<string> { "/images/shop/dress/3.jpg", "/images/shop/dress/3-1.jpg" },
+                SubCategory="Printed",
+                Classification="Dress"
             };
             _products.Add(p6);
 
             var p7 = new Product
             {
                 ID = 7,
-                Category = "women",
+                Category = "Women",
                 Name = "Light Blue Denim Dress",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 48.99,
                 Price = 32.99,
                 OnSale = true,
                 SKU = "10001ABC-07",
-                Size = "Small, Medium, Large",
-                Color = "Blue Denm",
-                Images = new List<string> { "/images/shop/dress/2.jpg", "/images/shop/dress/2-2.jpg" }
+                Size = "Small, Large",
+                Color = "Light Blue, Denim",
+                Images = new List<string> { "/images/shop/dress/2.jpg", "/images/shop/dress/2-2.jpg" },
+                SubCategory="Denim",
+                Classification="Dress"
             };
             _products.Add(p7);
 
@@ -135,7 +149,7 @@ namespace CanvasEcomm.Services
             var p8 = new Product
             {
                 ID = 8,
-                Category = "women",
+                Category = "Women",
                 Name = "Checked Short Dress",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 32.99,
@@ -144,7 +158,9 @@ namespace CanvasEcomm.Services
                 SKU = "10001ABC-08",
                 Size = "Small, Medium",
                 Color = "Gre, White, Blue",
-                Images = new List<string> { "/images/shop/dress/1.jpg", "/images/shop/dress/1-1.jpg" }
+                Images = new List<string> { "/images/shop/dress/1.jpg", "/images/shop/dress/1-1.jpg" },
+                SubCategory="Checked",
+                Classification="Dress"
             };
             _products.Add(p8);
 
@@ -152,7 +168,7 @@ namespace CanvasEcomm.Services
             var p9 = new Product
             {
                 ID = 9,
-                Category = "accessories",
+                Category = "Accessories",
                 Name = "Unisex Sunglasses",
                 Description = new MvcHtmlString("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"),
                 MSRP = 19.99,
@@ -161,7 +177,9 @@ namespace CanvasEcomm.Services
                 SKU = "10001ABC-09",
                 Size = "Standard",
                 Color = "Silver",
-                Images = new List<string> { "/images/shop/sunglasses/1.jpg", "/images/shop/sunglasses/1-1.jpg" }
+                Images = new List<string> { "/images/shop/sunglasses/1.jpg", "/images/shop/sunglasses/1-1.jpg" },
+                SubCategory="Unisex",
+                Classification="Sunglasses"
             };
             _products.Add(p9);
 
@@ -177,7 +195,9 @@ namespace CanvasEcomm.Services
                 SKU = "10001ABC-10",
                 Size = "Standard",
                 Color = "Silver",
-                Images = new List<string> { "/images/shop/sunglasses/2.jpg", "/images/shop/sunglasses/2-1.jpg" }
+                Images = new List<string> { "/images/shop/sunglasses/2.jpg", "/images/shop/sunglasses/2-1.jpg" },
+                SubCategory="Aviation",
+                Classification="Sunglasses"
             };
             _products.Add(p10);
 

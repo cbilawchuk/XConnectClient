@@ -10,6 +10,7 @@ namespace CanvasEcomm.Models
     {
         public int ID { get; set; }
         public string Category { get; set; }
+        public string SubCategory { get; set; }
         public string Name { get; set; }
         public MvcHtmlString Description { get; set; }
         public double MSRP { get; set; }
@@ -18,6 +19,7 @@ namespace CanvasEcomm.Models
         public string SKU { get; set; }
         public string Size { get; set; }
         public string Color { get; set; }
+        public string Classification { get; set; }
         public IEnumerable<string> Images { get; set; }
 
     }

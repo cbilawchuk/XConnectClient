@@ -7975,24 +7975,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Clark Bilawchuk\\.nuget\\packages\\": {},
+    "C:\\Users\\clark.bilawchuk\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\GIT\\SITECORE\\XConnectClient\\PersonalShopper\\PersonalShopper\\PersonalShopper.csproj",
+      "projectUniqueName": "C:\\GIT\\SITECORE\\XConnectClient\\PersonalShopper\\PersonalShopper\\PersonalShopper.csproj",
       "projectName": "PersonalShopper",
-      "projectPath": "E:\\GIT\\SITECORE\\XConnectClient\\PersonalShopper\\PersonalShopper\\PersonalShopper.csproj",
-      "packagesPath": "C:\\Users\\Clark Bilawchuk\\.nuget\\packages\\",
-      "outputPath": "E:\\GIT\\SITECORE\\XConnectClient\\PersonalShopper\\PersonalShopper\\obj\\",
+      "projectPath": "C:\\GIT\\SITECORE\\XConnectClient\\PersonalShopper\\PersonalShopper\\PersonalShopper.csproj",
+      "packagesPath": "C:\\Users\\clark.bilawchuk\\.nuget\\packages\\",
+      "outputPath": "C:\\GIT\\SITECORE\\XConnectClient\\PersonalShopper\\PersonalShopper\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Clark Bilawchuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\clark.bilawchuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

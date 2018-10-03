@@ -20,7 +20,7 @@ namespace CanvasEcomm.Models
                 this.Products = ps.ProductList.Where(x => x.OnSale == true);
             } else
             {
-                this.Products = ps.ProductList.Where(x => x.Category.Equals(category.ToLower()));
+                this.Products = ps.ProductList.Where(x => x.Category.ToLower().Equals(category.ToLower()));
             }            
         }
         public string Title { get; set; }

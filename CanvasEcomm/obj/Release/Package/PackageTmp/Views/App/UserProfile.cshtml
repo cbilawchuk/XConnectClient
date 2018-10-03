@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_LayoutLite.cshtml";
 }
 
-@model PageViewModel
+@model UserProfileViewModel
 <section id="page-title">
     <div class="container clearfix">
         <h1>@Model.Title</h1>
@@ -19,7 +19,7 @@
     <div class="content-wrap">
         <div class="container clearfix">
 
-            <div id="shop" class="shop product-3 grid-container clearfix" data-layout="fitRows">
+            <div id="shop" class="shop product-4 grid-container clearfix" data-layout="fitRows">
 
                 @foreach (var product in Model.Products)
                 {

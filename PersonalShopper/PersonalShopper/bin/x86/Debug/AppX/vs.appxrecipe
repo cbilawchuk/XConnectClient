@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-MLLDLBM</Machine>
-    <WindowsUser>Clark Bilawchuk</WindowsUser>
+    <Machine>30268-M5510</Machine>
+    <WindowsUser>clark.bilawchuk</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>338B6EBD-7D57-4C9E-9392-D78FE977CEDB</PackageIdentityName>
     <PackageIdentityPublisher>CN=Clark Bilawchuk</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>C5508F8B79742ADA9075EAC348576E557C85500ED4AF177E62C3F49C449A8C3D</RegisteredManifestChecksum>
+    <LayoutDir>C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>86712068B3B589AB03B9B1E96B857E7D4A28F1020F11337AE691315AFA7A2BE3</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>338B6EBD-7D57-4C9E-9392-D78FE977CEDB_1.0.0.0_x86__rk41eab5284e4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>338B6EBD-7D57-4C9E-9392-D78FE977CEDB_rk41eab5284e4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>338B6EBD-7D57-4C9E-9392-D78FE977CEDB</RegisteredPackageID>
@@ -28,46 +28,46 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-03T03:36:10.583</Modified>
+      <Modified>2018-10-03T17:58:09.522</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\PersonalShopper.exe">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\PersonalShopper.exe">
       <PackagePath>entrypoint\PersonalShopper.exe</PackagePath>
-      <Modified>2018-10-03T03:36:09.909</Modified>
+      <Modified>2018-10-03T17:58:04.096</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.net.http\2.2.29\lib\win8\System.Net.Http.Extensions.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\microsoft.net.http\2.2.29\lib\win8\System.Net.Http.Extensions.dll">
       <PackagePath>System.Net.Http.Extensions.dll</PackagePath>
-      <Modified>2016-01-25T01:04:16.713</Modified>
+      <Modified>2015-02-20T01:10:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.net.http\2.2.29\lib\win8\System.Net.Http.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\microsoft.net.http\2.2.29\lib\win8\System.Net.Http.Primitives.dll">
       <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
-      <Modified>2016-01-25T01:04:16.699</Modified>
+      <Modified>2015-02-20T01:10:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.projectoxford.common\1.0.324\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Common.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\microsoft.projectoxford.common\1.0.324\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Common.dll">
       <PackagePath>Microsoft.ProjectOxford.Common.dll</PackagePath>
       <Modified>2017-01-20T16:57:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.projectoxford.face\1.4.0\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Microsoft.ProjectOxford.Face.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\microsoft.projectoxford.face\1.4.0\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Microsoft.ProjectOxford.Face.dll">
       <PackagePath>Microsoft.ProjectOxford.Face.dll</PackagePath>
       <Modified>2018-02-28T11:48:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.toolkit.uwp.notifications\4.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\microsoft.toolkit.uwp.notifications\4.0.0\lib\uap10.0\Microsoft.Toolkit.Uwp.Notifications.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.Notifications.dll</PackagePath>
       <Modified>2018-08-08T02:23:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.0\lib\uap10.0\Microsoft.Xaml.Interactions.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.0\lib\uap10.0\Microsoft.Xaml.Interactions.dll">
       <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
       <Modified>2016-10-19T21:07:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.0\lib\uap10.0\Microsoft.Xaml.Interactivity.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.0\lib\uap10.0\Microsoft.Xaml.Interactivity.dll">
       <PackagePath>Microsoft.Xaml.Interactivity.dll</PackagePath>
       <Modified>2016-10-19T21:07:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Clark Bilawchuk\.nuget\packages\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="C:\Users\clark.bilawchuk\.nuget\packages\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
       <Modified>2018-03-24T21:44:14.000</Modified>
     </AppxPackagedFile>
@@ -727,108 +727,108 @@
       <PackagePath>netstandard.dll</PackagePath>
       <Modified>2018-07-20T14:48:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-10-02T01:39:35.866</Modified>
+      <Modified>2018-10-03T14:11:57.681</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2018-10-02T01:39:35.839</Modified>
+      <Modified>2018-10-03T14:11:57.647</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-02T01:39:35.842</Modified>
+      <Modified>2018-10-03T14:11:57.648</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-02T01:39:35.844</Modified>
+      <Modified>2018-10-03T14:11:57.649</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-02T01:39:35.846</Modified>
+      <Modified>2018-10-03T14:11:57.651</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-02T01:39:35.848</Modified>
+      <Modified>2018-10-03T14:11:57.653</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-02T01:39:35.850</Modified>
+      <Modified>2018-10-03T14:11:57.654</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-02T01:39:35.852</Modified>
+      <Modified>2018-10-03T14:11:57.655</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\PersonalShopper.xr.xml">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\PersonalShopper.xr.xml">
       <PackagePath>PersonalShopper.xr.xml</PackagePath>
-      <Modified>2018-10-02T03:30:54.588</Modified>
+      <Modified>2018-10-03T14:11:59.233</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.596</Modified>
+      <Modified>2018-10-03T17:58:03.258</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Controls\CameraControl.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Controls\CameraControl.xbf">
       <PackagePath>Controls\CameraControl.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.597</Modified>
+      <Modified>2018-10-03T17:58:03.260</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\Page.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\Page.xbf">
       <PackagePath>Styles\Page.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.593</Modified>
+      <Modified>2018-10-03T17:58:03.245</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\_Colors.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\_Colors.xbf">
       <PackagePath>Styles\_Colors.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.593</Modified>
+      <Modified>2018-10-03T17:58:03.250</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\_FontSizes.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\_FontSizes.xbf">
       <PackagePath>Styles\_FontSizes.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.594</Modified>
+      <Modified>2018-10-03T17:58:03.252</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\_Thickness.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\_Thickness.xbf">
       <PackagePath>Styles\_Thickness.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.595</Modified>
+      <Modified>2018-10-03T17:58:03.254</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\TextBlock.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Styles\TextBlock.xbf">
       <PackagePath>Styles\TextBlock.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.595</Modified>
+      <Modified>2018-10-03T17:58:03.256</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\CameraPage.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\CameraPage.xbf">
       <PackagePath>Views\CameraPage.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.597</Modified>
+      <Modified>2018-10-03T17:58:03.262</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\MainPage.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\MainPage.xbf">
       <PackagePath>Views\MainPage.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.598</Modified>
+      <Modified>2018-10-03T17:58:03.263</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\SettingsPage.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\SettingsPage.xbf">
       <PackagePath>Views\SettingsPage.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.599</Modified>
+      <Modified>2018-10-03T17:58:03.265</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\ShellPage.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\ShellPage.xbf">
       <PackagePath>Views\ShellPage.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.599</Modified>
+      <Modified>2018-10-03T17:58:03.267</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\WebViewPage.xbf">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Views\WebViewPage.xbf">
       <PackagePath>Views\WebViewPage.xbf</PackagePath>
-      <Modified>2018-10-03T03:36:09.600</Modified>
+      <Modified>2018-10-03T17:58:03.269</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-04-20T02:01:52.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-10-02T04:03:55.807</Modified>
+      <Modified>2018-10-03T17:58:07.876</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Core\PersonalShopper.exe">
+    <AppxPackagedFile Include="C:\GIT\SITECORE\XConnectClient\PersonalShopper\PersonalShopper\bin\x86\Debug\Core\PersonalShopper.exe">
       <PackagePath>PersonalShopper.exe</PackagePath>
-      <Modified>2018-10-03T03:36:10.577</Modified>
+      <Modified>2018-10-03T17:58:09.500</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

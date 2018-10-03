@@ -239,6 +239,8 @@
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\DetailViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\ProductCustomFacet.cs" />
+    <Compile Include="Models\UserProfileViewModel.cs" />
     <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Subscribe.cs" />

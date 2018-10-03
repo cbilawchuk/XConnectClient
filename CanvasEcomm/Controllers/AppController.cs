@@ -71,7 +71,25 @@ namespace CanvasEcomm.Controllers
         [HttpGet]
         public ActionResult UserProfile(string Id)
         {
-            PageViewModel model = new PageViewModel("Accessories", Id, "Personal Shopper History");
+            // Get Research History   // 
+
+            // Show product attribute counts
+            // Color, Size, Classification eg: Watch (3), Blue (2)
+
+            // Show signups to studio site
+            // Show analytics info
+
+
+            ProductCustomFacet facet = new ProductCustomFacet
+            {
+                AccountID = Id,
+                SKU_History = new List<string> { "10001ABC-10", "10001ABC-09", "10001ABC-03", "10001ABC-01" }
+            };
+
+            
+
+
+            UserProfileViewModel model = new UserProfileViewModel(facet, "User Profile: History");
             return View(model);
         }
 
