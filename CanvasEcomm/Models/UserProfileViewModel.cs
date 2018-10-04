@@ -12,24 +12,15 @@ namespace CanvasEcomm.Models
         {
             this.Title = facet.AssistKey;
             this.Tagline = tagline;
-            //this.Category = category;
+            this.Category = "UserProfile";
 
-            ProductService ps = new ProductService();
-
-            List<Product> userProductsList = new List<Product>();
-
-            foreach(var sku in facet.SKU_History)
-            {
-                userProductsList.Add(ps.ProductList.Where(x => x.SKU.ToLower().Equals(sku.ToLower())).FirstOrDefault());
-            }
-
-            this.Products = userProductsList;
+            this.Items = DataServices.UserExperienceData.Where(x => x.AssistKey.Equals(facet.AssistKey));
                         
         }
         public string Title { get; set; }
         public string Category { get; set; }
         public string Tagline { get; set; }
 
-        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<DataRecord> Items { get; set; }
     }
 }

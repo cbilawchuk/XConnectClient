@@ -8690,19 +8690,19 @@
     "UAP,Version=v10.0.17134": []
   },
   "packageFolders": {
-    "C:\\Users\\clark.bilawchuk\\.nuget\\packages\\": {}
+    "C:\\Users\\Clark Bilawchuk\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\CameraFaceDetection.csproj",
+      "projectUniqueName": "E:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\CameraFaceDetection.csproj",
       "projectName": "CameraFaceDetection",
-      "projectPath": "C:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\CameraFaceDetection.csproj",
-      "projectJsonPath": "C:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\project.json",
-      "packagesPath": "C:\\Users\\clark.bilawchuk\\.nuget\\packages\\",
-      "outputPath": "C:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\obj\\",
+      "projectPath": "E:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\CameraFaceDetection.csproj",
+      "projectJsonPath": "E:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\project.json",
+      "packagesPath": "C:\\Users\\Clark Bilawchuk\\.nuget\\packages\\",
+      "outputPath": "E:\\GIT\\SITECORE\\XConnectClient\\CameraFaceDetection\\cs\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "C:\\Users\\clark.bilawchuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Clark Bilawchuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {

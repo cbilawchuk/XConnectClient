@@ -21,6 +21,5 @@ namespace CanvasEcomm.Models
         public string Color { get; set; }
         public string Classification { get; set; }
         public IEnumerable<string> Images { get; set; }
-
     }
 }

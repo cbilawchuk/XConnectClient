@@ -43,7 +43,6 @@
 
 @if (Model.ShowPopup)
 {
-    <a class="btn" data-toggle="modal" href="#myModal">View Your Assist Key &raquo;</a>
     <div class="modal hide fade" id="myModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-body">
@@ -56,20 +55,19 @@
 
                         <div class="row">
                             <div class="col-md-6 product_img">
-                                <img src="~/images/services/main-bg.jpg" class="img-responsive">
+                                <img src="~/images/shop/shopping.jpg" class="img-responsive">
                             </div>
                             <div class="col-md-6 product_content">
-                                <h4>Assist Key: <span>@Model.AssistKey</span></h4>
                                 <p>Try our personal shopping experience. Use your Assist Key at any of our stores. Just ask your associate for a personal shopping experience and provide the Assist Key shown below.  They will help you try find just the right product, just for you from our vast in-store selection.. </p>
                                 
-                                <h3 class="cost">Your Personal Assist Key: 
-                                <h1 class="pre-cost">@Model.AssistKey</h1>
-                                </h3>
+                                <h4 class="cost">Your Personal Shopper Key: </h4>
+                                <h1 class="pre-cost"><span>@Model.AssistKey</span></h1>
+                                
 
                                 <div class="space-ten"></div>
-                                <div class="btn-ground">
-                                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-heart"></span> Email me my Asist Key</button>
-                                </div>
+                                @*<div class="btn-ground">
+                                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-heart"></span> Email me my shopping key!</button>
+                                </div>*@
                             </div>
                         </div>
 

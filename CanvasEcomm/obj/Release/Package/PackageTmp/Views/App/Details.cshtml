@@ -7,7 +7,7 @@
         <span>@Model.Product.Category</span>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="@Url.Action("Index","App")">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@Model.Product.Category</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="@Url.Action(Model.Product.Category,"App")">@Model.Product.Category</a></li>
         </ol>
     </div>
 </section>

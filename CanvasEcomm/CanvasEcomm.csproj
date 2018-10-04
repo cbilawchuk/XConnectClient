@@ -246,6 +246,7 @@
     <Compile Include="Models\Subscribe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContactServices.cs" />
+    <Compile Include="Services\DataServices.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1108,6 +1109,7 @@
     <Content Include="images\shop\shoes\2-small.jpg" />
     <Content Include="images\shop\shoes\2.jpg" />
     <Content Include="images\shop\shop-menu.jpg" />
+    <Content Include="images\shop\shopping.jpg" />
     <Content Include="images\shop\slider\1.jpg" />
     <Content Include="images\shop\slider\2.jpg" />
     <Content Include="images\shop\slider\3.jpg" />

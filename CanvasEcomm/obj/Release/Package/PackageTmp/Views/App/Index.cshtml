@@ -43,17 +43,34 @@
 
 @if (Model.ShowPopup)
 {
-    <a class="btn" data-toggle="modal" href="#myModal">Launch Modal</a>
     <div class="modal hide fade" id="myModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-body">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+                        <h4 class="modal-title" id="myModalLabel">A personal shopping experience just for you!</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                        <h2>Your AssistKey: @Model.AssistKey</h2>    
+
+                        <div class="row">
+                            <div class="col-md-6 product_img">
+                                <img src="~/images/shop/shopping.jpg" class="img-responsive">
+                            </div>
+                            <div class="col-md-6 product_content">
+                                <p>Try our personal shopping experience. Use your Assist Key at any of our stores. Just ask your associate for a personal shopping experience and provide the Assist Key shown below.  They will help you try find just the right product, just for you from our vast in-store selection.. </p>
+                                
+                                <h4 class="cost">Your Personal Shopper Key: </h4>
+                                <h1 class="pre-cost"><span>@Model.AssistKey</span></h1>
+                                
+
+                                <div class="space-ten"></div>
+                                @*<div class="btn-ground">
+                                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-heart"></span> Email me my shopping key!</button>
+                                </div>*@
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

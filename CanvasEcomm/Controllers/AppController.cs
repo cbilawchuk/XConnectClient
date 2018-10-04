@@ -72,23 +72,51 @@ namespace CanvasEcomm.Controllers
             SetViewedProductCounter();
 
             // check cookie if has AssistKey, use to add to  facet, else generate new
-            var AssistKey = RandomStrings(6);
-            SetCookie("Canvas.Ecomm.AssistKey", AssistKey, false);
+            string _assistKey = null;
+            var hasCookiedKey = GetCookie("Canvas.Ecomm.AssistKey");
+            if(hasCookiedKey != null)
+            {
+                _assistKey = hasCookiedKey;
+            }
+            else
+            {
+                _assistKey = RandomStrings(6);
+                SetCookie("Canvas.Ecomm.AssistKey", _assistKey, false);
+            }           
+            
 
             var existingProducts = GetCookie("Canvas.Ecomm.Products");
             if (existingProducts != null)
             {
-                SetCookie("Canvas.Ecomm.Products", existingProducts.Trim() + "," + model.Product.SKU , true);
+                existingProducts = existingProducts.Trim() + "," + model.Product.SKU;
+                SetCookie("Canvas.Ecomm.Products", existingProducts, true);
             } else
             {
-                SetCookie("Canvas.Ecomm.Products", model.Product.SKU, true);
+                existingProducts = model.Product.SKU;
+                SetCookie("Canvas.Ecomm.Products", existingProducts, true);
             }
 
             //set xconnect custom facet with product info, using AssistKey
             // Save product viewed to xconnect facet
 
+            //find record
+            //if exists, increment view count
+            //else add to data
+            var uniqueId = string.Format("{0}-{1}-{2}", _assistKey, model.Product.ID, model.Product.SKU);           
+            if (DataServices.Exists(uniqueId))
+            {
+                var drX = DataServices.Find(uniqueId);
+                drX.EngagementScore = drX.EngagementScore + 1;
+                DataServices.Update(drX);
+            } else
+            {
+                var dr = new DataRecord { ID = uniqueId, AssistKey = _assistKey, Product = model.Product, EngagementScore = 1 };
+                DataServices.Add(dr);
+            }
 
-            
+           
+
+
             return View(model);
         }
 
@@ -103,15 +131,22 @@ namespace CanvasEcomm.Controllers
 
             // Show signups to studio site
             // Show analytics info
+            ProductCustomFacet facet = new ProductCustomFacet();            
 
+            var records = DataServices.UserExperienceData.Where(x=>x.AssistKey.Equals(Id));
+            List<string> skus = new List<string>();
+            foreach(var record in records)
+            {
+                skus.Add(record.Product.SKU);
+            }
 
-            var skus = GetCookie("Canvas.Ecomm.Products").Split(',');
-
-            ProductCustomFacet facet = new ProductCustomFacet
+            facet = new ProductCustomFacet
             {
                 AssistKey = Id,
                 SKU_History = skus.ToList<string>()
             };
+         
+            
 
             
 
